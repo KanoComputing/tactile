@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/vim,macos,emacs,sublimetext,visualstudio
+# Created by https://www.gitignore.io/api/qt,vim,macos,emacs,sublimetext,visualstudio
 
 ### Emacs ###
 # -*- mode: gitignore; -*-
@@ -54,9 +54,6 @@ flycheck_*.el
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
-Icon
-
 # Thumbnails
 ._*
 
@@ -75,6 +72,51 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+### Qt ###
+# C++ objects and libs
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.lai
+*.so
+*.dll
+*.dylib
+
+# Qt-es
+object_script.*.Release
+object_script.*.Debug
+*_plugin_import.cpp
+/.qmake.cache
+/.qmake.stash
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*.qmlc
+*.jsc
+Makefile*
+*build-*
+
+# Qt unit tests
+target_wrapper.*
+
+# QtCreator
+*.autosave
+
+# QtCreator Qml
+*.qmlproject.user
+*.qmlproject.user.*
+
+# QtCreator CMake
+CMakeLists.txt.user*
 
 ### SublimeText ###
 # Cache files for Sublime Text
@@ -460,4 +502,6 @@ ASALocalRun/
 .localhistory/
 
 
-# End of https://www.gitignore.io/api/vim,macos,emacs,sublimetext,visualstudio
+# End of https://www.gitignore.io/api/qt,vim,macos,emacs,sublimetext,visualstudio
+
+res/i18n

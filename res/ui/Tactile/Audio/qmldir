@@ -1,0 +1,13 @@
+# qmldir
+#
+# Copyright (C) 2018 Kano Computing Ltd.
+# License: http://www.gnu.org/licenses/gpl-2.0.txt GNU GPL v2
+#
+# Application specific widgets module.
+
+
+module Tactile.Audio
+
+PlaySound 1.0 play_sound.qml
+TroubleshootAudio 1.0 troubleshoot_audio.qml
+VisualiseMicrophone 1.0 visualise_microphone.qml

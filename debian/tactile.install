@@ -1,0 +1,6 @@
+bin/tactile /usr/bin
+
+res/i18n /usr/share/tactile
+res/icon/tactile.app usr/share/applications/
+res/icon/tactile-app.png usr/share/icons/Kano/66x66/apps/
+res/ui /usr/share/tactile

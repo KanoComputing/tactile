@@ -1,0 +1,17 @@
+# qmldir
+#
+# Copyright (C) 2018 Kano Computing Ltd.
+# License: http://www.gnu.org/licenses/gpl-2.0.txt GNU GPL v2
+#
+# Application specific widgets module.
+
+
+module Tactile.Terminal
+
+Terminal 1.0 terminal.qml
+TerminalFont 1.0 terminal_font.qml
+TerminalHeader 1.0 terminal_header.qml
+TerminalPrompt 1.0 terminal_prompt.qml
+TerminalText 1.0 terminal_text.qml
+AsciiRectangle 1.0 ascii_rectangle.qml
+singleton TerminalSettings 1.0 terminal_settings.qml

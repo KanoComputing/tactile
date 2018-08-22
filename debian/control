@@ -1,0 +1,35 @@
+Source: tactile
+Maintainer: Team Kano <dev@kano.me>
+Section: x11
+Priority: optional
+Standards-Version: 3.9.4
+Build-Depends:
+    build-essential,
+    debhelper (>= 9),
+    kano-graphics-libs,
+    kano-qt-sdk-dev,
+    libqt5all-dev
+
+Package: tactile
+Architecture: any
+Depends:
+    ${shlibs:Depends},
+    ${misc:Depends},
+    kano-qt-sdk,
+    libqt5all
+Description: App for the Kano Kit experience demystifying how touch screens work
+ Provides a friendly user interface into the Onboarding
+
+Package: tactile-dbg
+Architecture: any
+Depends:
+    ${shlibs:Depends},
+    ${misc:Depends},
+    kano-qt-sdk,
+    libqt5all
+Description: Debug version of the package
+
+Package: tactile-i18n-orig
+Architecture: all
+Description: Data for working on project translations
+Multi-Arch: foreign

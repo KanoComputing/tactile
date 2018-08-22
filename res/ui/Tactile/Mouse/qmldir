@@ -1,0 +1,15 @@
+# qmldir
+#
+# Copyright (C) 2018 Kano Computing Ltd.
+# License: http://www.gnu.org/licenses/gpl-2.0.txt GNU GPL v2
+#
+# Application specific widgets module.
+
+
+module Tactile.Mouse
+
+Click 1.0 click.qml
+DragAndDrop 1.0 drag_and_drop.qml
+Hover 1.0 hover.qml
+MouseScene 1.0 mouse_scene.qml
+Tooltip 1.0 tooltip.qml
