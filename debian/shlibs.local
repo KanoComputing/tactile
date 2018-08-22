@@ -1,0 +1,5 @@
+libQt5Gui 5 libqt5all (>= 5.5-0)
+libQt5Quick 5 libqt5all (>= 5.5-0)
+libQt5Qml 5 libqt5all (>= 5.5-0)
+libQt5Network 5 libqt5all (>= 5.5-0)
+libQt5Core 5 libqt5all (>= 5.5-0)

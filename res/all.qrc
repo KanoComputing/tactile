@@ -1,0 +1,18 @@
+<!--
+all.qrc
+
+Copyright (C) 2018 Kano Computing Ltd.
+License: http://www.gnu.org/licenses/gpl-2.0.txt GNU GPL v2
+
+Resource Collection Files.
+-->
+
+
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+
+    <!-- Qt QML UI Resources -->
+    <file>ui/main.qml</file>
+
+</qresource>
+</RCC>
