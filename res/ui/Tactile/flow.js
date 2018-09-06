@@ -46,6 +46,16 @@ function create_steps() {
     app.hide_cursor();
 
     /**
+     * Start Screen
+     */
+    new_scene(Tactile.TextNext.TextNextScene);
+
+    new_step(function(scene){
+        scene.text = "How Touch Works";
+        scene.next_button_text = "Let's Go";
+    }, Tactile.TextNext.signals.next);
+
+    /**
      * Greetings
      */
 
