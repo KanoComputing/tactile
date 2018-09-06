@@ -25,7 +25,7 @@ Item {
     // color: "#414a50"
 
     Text {
-        text: parent.text
+        text: root.text
         font.family: "Bariol"
         font.pointSize: 36
         anchors.horizontalCenter: parent.horizontalCenter
@@ -52,7 +52,7 @@ Item {
                 font.pointSize: 18
                 font.weight: Font.Bold
                 color: "white"
-                text: parent.next_button_text
+                text: root.next_button_text
                 horizontalAlignment: Text.AlignHCenter
                 y: 9
             }

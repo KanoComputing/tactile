@@ -39,7 +39,7 @@ function create_steps() {
         saved_progress = progress.get_checkpoint(),
         username = saved_progress.username || "";
 
-    /* purely to follow if and where we restore Tactile from a premature exit */
+    // Purely to follow if and where we restore Tactile from a premature exit.
     console.log("flow saved progress=" + saved_progress.checkpoint_id);
     console.log("flow username=" + username);
 
@@ -48,12 +48,13 @@ function create_steps() {
     /**
      * Start Screen
      */
+
     new_scene(Tactile.TextNext.TextNextScene);
 
     new_step(function(scene){
         scene.text = "How Touch Works";
         scene.next_button_text = "Let's Go";
-    }, Tactile.TextNext.signals.next);
+    }, Tactile.TextNext.TextNextScene.signals.next);
 
     /**
      * Greetings
