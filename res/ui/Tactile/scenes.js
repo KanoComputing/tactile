@@ -69,6 +69,14 @@ var Tactile = {
             }
         }
     },
+    TextNext: {
+        TextNextScene: {
+            name: 'TextNext/text_next_scene.qml',
+            signals: {
+                next: 'next'
+            }
+        }
+    },
     Touch: {
         TouchScreenScene: {
             name: 'Touch/touch_screen_scene.qml',
