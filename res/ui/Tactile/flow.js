@@ -16,80 +16,281 @@ Qt.include('scenes.js');
 Qt.include('flow_lib.js');
 Qt.include('colour_palette.js');
 
-/**
- * Ideally the syntax:
- *     .import 'Animation/animations/computer.js' as ASCII_ANMIATIONS
- *  would be used, but for now we will have to settle for naming the variables
- *  in the included files
- */
-Qt.include('Animation/animations/rabbit.js');
-Qt.include('Animation/animations/computer.js');
-Qt.include('Animation/animations/keyboard.js');
-Qt.include('Animation/animations/boom.js');
-
 
 function create_steps() {
-    var permitted_retries = 2,
-        explosion_animation = {
-            frames: boom_animation,
-            columns: 30,
-            rows: 18,
-            fps: 20
-        },
-        saved_progress = progress.get_checkpoint(),
-        username = saved_progress.username || "";
+    var saved_progress = progress.get_checkpoint();
 
     /* purely to follow if and where we restore Tactile from a premature exit */
-    console.log("flow saved progress=" + saved_progress.checkpoint_id);
-    console.log("flow username=" + username);
+    console.log("flow saved progress = " + saved_progress.checkpoint_id);
 
-    app.hide_cursor();
+    if (Qt.platform.os == 'linux') {
+        app.hide_cursor();
+    }
 
     /**
-     * Greetings
+     * Start the app
      */
 
-    new_scene(Tactile.Terminal.Terminal);
-
+    new_scene(Tactile.Start.StartScene);
     new_step(function(scene) {
-        scene.echo_msg(qsTr(
-            "Hello...<br>"
+    }, Tactile.Start.StartScene.signals.done);
+
+    /**
+     * Reveal the wires
+     */
+
+    new_scene(Tactile.Wires.RevealTheWires);
+    new_step(function(scene) {
+        scene.bg_image = 'Wires/touchscreen.png';
+        scene.instructions = qsTr(
+            "There are amazing thigs hidden inside your screen...\n" +
+            "\n" +
+            "Swipe to see them"
+        );
+        // Prevent accidental tapping from previous scene skipping instructions
+        scene.timer.sleep(500);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        scene.enabled = true;
+    }, Tactile.Wires.RevealTheWires.signals.revealed);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "Your screen is filled with invisible wires made " +
+            "of Indium Oxide. Ready to see what the do?"
         ));
+    }, Tactile.Wires.RevealTheWires.signals.done);
+
+    /**
+     * Touch a wire
+     */
+
+    new_scene(Tactile.Wires.TouchAWire);
+    new_step(function(scene) {
+        scene.prompt(qsTr("Each wire is filled with electric charges."));
+        scene.timer.sleep(2000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "But so is your finger!\n" +
+            "Touch the wire to see what happens..."
+        ));
+        scene.timer.sleep(2000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+    }, Tactile.Wires.TouchAWire.signals.touched);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "When you touch the sceen the wires can detect the electric " +
+            "charge in your finger"
+        ));
+        scene.timer.sleep(2000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        scene.prompt('');
+        scene.max_touches = 10;
+    }, Tactile.Wires.TouchAWire.signals.done);
+
+    /**
+     * Touch a grid
+     */
+
+    new_scene(Tactile.Wires.TouchAGrid);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "Each wire keeps an eye out for your finger\n" +
+            "Touch the screen again"
+        ));
+        scene.timer.sleep(1000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+    }, Tactile.Wires.TouchAGrid.signals.touch);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "Together the wires can figure out the exact points that " +
+            "you're touching"
+        ));
+        scene.timer.sleep(6000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "Try touching multiple places\n" +
+            "Your screen can detect up to 10 touch points!"
+        ));
+        scene.timer.sleep(20000);
+    }, Tactile.Sleep.signals.wait_over);
+
+    /**
+     * Touch points
+     */
+
+    new_scene(Tactile.Wires.TouchPoints);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "Your screen sends messages to your computer's brain telling it " +
+            "where you are touching"
+        ));
+        // Give a couple of seconds to read the instructions
+        scene.timer.sleep(2000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        // After the wait, dismiss on press
+    }, Tactile.Wires.TouchPoints.signals.pressed);
+    new_step(function(scene) {
+        scene.prompt();
+        scene.timer.sleep(4000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        scene.quiz({
+            question: qsTr(
+                'What do those x and y numbers mean?\n' +
+                'Try to figure it out, then tap the correct answer:'
+            ),
+            responses: [
+                qsTr('How fast your finger is moving'),
+                qsTr('Where your finger is on the screen'),
+                qsTr('How much electricity is in your finger')
+            ],
+            answer: 1
+        });
+    }, Tactile.Wires.TouchPoints.signals.correct_response);
+    new_step(function(scene) {
         scene.timer.sleep(2000);
     }, Tactile.Sleep.signals.wait_over);
 
     /**
-     * Touch screen interactive animation
+     * Reveal the colors
      */
 
-    new_scene(Tactile.Touch.TouchScreenScene);
-
+    new_scene(Tactile.Wires.RevealTheWires);
     new_step(function(scene) {
-        scene.echo_msg(qsTr(
-            "Your screen is filled with invisible wires<br><br>" +
-            "<font color='%1'>Touch the screen</font> to see them"
-        ).arg(Colours.yellow));
-    }, Tactile.Touch.TouchScreenScene.signals.touched);
-
-    new_step(function(scene) {
-        scene.clear_msgs();
-        scene.echo_msg(qsTr(
-            "These wires can feel the <font color='%1'>electric charge</font> " +
-            "in your fingers...<br><br>" +
-            "Now try swiping with all ten!"
-        ).arg(Colours.yellow));
-        scene.timer.sleep(20 * 1000);  // ms
+        scene.bg_image = 'Pixels/rainbow.png';
+        scene.instructions = qsTr(
+            "Did you see those points of light???\n" +
+            "\n" +
+            "Swipe to chase them into your screen"
+        );
+        // Prevent accidental tapping from previous scene skipping instructions
+        scene.timer.sleep(1000);
     }, Tactile.Sleep.signals.wait_over);
-
     new_step(function(scene) {
-        scene.prompt({prompt_marker: qsTr("Press [ENTER] to continue")});
-    }, Tactile.Audio.VisualiseMicrophone.signals.response);
+        scene.enabled = true;
+    }, Tactile.Wires.RevealTheWires.signals.revealed);
 
-    // Creation of the TouchScreenScene causes the padding to be modified, even
-    // if the scene itself is skipped. Prevent this by restoring regardless.
+    /**
+     * Guess the pixel
+     */
+
+    new_scene(Tactile.Pixels.GuessThePixel);
     new_step(function(scene) {
-        scene.restorePadding();
-    });
+        scene.prompt(qsTr(
+            "Beneath the wires, your screen is full of 1 million colorful " +
+            "little lights... called pixels"
+        ));
+        scene.timer.sleep(4000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        // Left eye
+        scene.prompt(qsTr(
+            "Let's bring the two layers of the screen together - touch " +
+            "and pixels!\n" +
+            "\n" +
+            "Can you find pixel 300, 300?"
+        ));
+        scene.resetTarget(300, 300, true);
+    }, Tactile.Pixels.GuessThePixel.signals.target_hit);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "Did you see that???\n" +
+            "That's a pixel!"
+        ));
+        scene.timer.sleep(4000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        // Right eye
+        scene.prompt(qsTr(
+            "Every pixel has an address.\n" +
+            "Can you touch pixel 500, 300?"
+        ));
+        scene.resetTarget(500, 300);
+    }, Tactile.Pixels.GuessThePixel.signals.target_hit);
+    new_step(function(scene) {
+        // Center mouth
+        scene.prompt(qsTr(
+            "Can you touch pixel 400, 500?"
+        ));
+        scene.resetTarget(400, 500);
+    }, Tactile.Pixels.GuessThePixel.signals.target_hit);
+    new_step(function(scene) {
+        // Center-right mouth
+        scene.prompt(qsTr(
+            "Can you touch pixel 500, 485?"
+        ));
+        scene.resetTarget(475, 485);
+    }, Tactile.Pixels.GuessThePixel.signals.target_hit);
+    new_step(function(scene) {
+        // Right mouth
+        scene.prompt(qsTr(
+            "Can you touch pixel 550, 450?"
+        ));
+        scene.resetTarget(550, 450);
+    }, Tactile.Pixels.GuessThePixel.signals.target_hit);
+    new_step(function(scene) {
+        // Center-left mouth
+        scene.prompt(qsTr(
+            "Can you touch pixel 320, 485?"
+        ));
+        scene.resetTarget(320, 485);
+    }, Tactile.Pixels.GuessThePixel.signals.target_hit);
+    new_step(function(scene) {
+        // Left mouth
+        scene.prompt(qsTr(
+            "Can you touch pixel 250, 450?"
+        ));
+        scene.resetTarget(250, 450);
+    }, Tactile.Pixels.GuessThePixel.signals.target_hit);
+    new_step(function(scene) {
+        scene.prompt('');
+        scene.timer.sleep(4000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        scene.transition();
+    }, Tactile.Pixels.GuessThePixel.signals.done);
+
+    /**
+     * Subpixel simulator
+     */
+
+    new_scene(Tactile.Pixels.SubpixelSimulator);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "This is what a pixel looks like up close!\n" +
+            "It's made up of little red, green and blue lights"
+        ));
+        scene.timer.sleep(6000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "Swipe up and down to change the color"
+        ));
+        scene.timer.sleep(4000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "The red, green and blue lights can work together to make any " +
+            "color!"
+        ));
+        scene.timer.sleep(4000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        scene.set_target(1, 0.3, 0);
+        scene.prompt(qsTr("Can you try to make orange?"));
+    }, Tactile.Pixels.SubpixelSimulator.signals.done);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "Nice work!"
+        ));
+        scene.timer.sleep(6000);
+    }, Tactile.Sleep.signals.wait_over);
 
     /**
      * Finalising

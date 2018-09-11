@@ -1,0 +1,17 @@
+#
+# qmldir
+#
+# Copyright (C) 2018 Kano Computing Ltd.
+# License: http://www.gnu.org/licenses/gpl-2.0.txt GNU GPL v2
+#
+# Pixel demystification scenes
+#
+
+
+module Tactile.Pixels
+
+GuessThePixel 1.0 guess_the_pixel.qml
+Pixel 1.0 pixel.qml
+PixelExplosion 1.0 pixel_explosion.qml
+SubpixelSimulator 1.0 subpixel_simulator.qml
+SubpixelSlider 1.0 subpixel_slider.qml
