@@ -106,5 +106,67 @@ var Tactile = {
         signals: {
             wait_over: 'timer.wait_over'
         }
+    },
+    Start: {
+        StartScene: {
+            name: 'Start/start.qml',
+            signals: {
+                done: 'done'
+            }
+        }
+    },
+    Wires: {
+        RevealTheWires: {
+            name: 'Wires/reveal_the_wires.qml',
+            signals: {
+                revealed: 'revealed',
+                done: 'done'
+            }
+        },
+        TouchAWire: {
+            name: 'Wires/touch_a_wire.qml',
+            signals: {
+                done: 'done'
+            }
+        },
+        TouchAGrid: {
+            name: 'Wires/touch_a_grid.qml',
+            signals: {
+                done: 'done',
+                touch: 'touch'
+            }
+        },
+        TouchPoints: {
+            name: 'Wires/touch_points.qml',
+            signals: {
+                pressed: 'pressed',
+                correct_response: 'correct_response',
+                done: 'done'
+            }
+        },
+    },
+    Pixels: {
+        SubpixelSimulator: {
+            name: 'Pixels/subpixel_simulator.qml',
+            signals: {
+                target_hit: 'target_hit',
+                done: 'done'
+            }
+        },
+        GuessThePixel: {
+            name: 'Pixels/guess_the_pixel.qml',
+            signals: {
+                target_hit: 'target_hit',
+                done: 'done'
+            }
+        },
+    },
+    Digitizer: {
+        DigitizerVisualizer: {
+            name: 'Digitizer/digitizer_visualizer.qml',
+            signals: {
+                done: 'done'
+            }
+        },
     }
 };

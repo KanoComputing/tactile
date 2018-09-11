@@ -34,7 +34,7 @@ ApplicationWindow {
     property int offscreen_x: 4000
     property int offscreen_y: 4000
 
-    property int overscan_value: 52
+    property int overscan_value: 0
 
     property int overscan_top: overscan_value
     property int overscan_bottom: overscan_value

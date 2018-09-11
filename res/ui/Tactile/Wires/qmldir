@@ -1,0 +1,18 @@
+#
+# qmldir
+#
+# Copyright (C) 2018 Kano Computing Ltd.
+# License: http://www.gnu.org/licenses/gpl-2.0.txt GNU GPL v2
+#
+# Components pertaining to demystification of touchscreen wires
+#
+
+
+module Tactile.Wires
+
+TouchPoints 1.0 touch_points.qml
+TouchIndicator 1.0 touch_indicator.qml
+TouchAWire 1.0 touch_a_wire.qml
+TouchAGrid 1.0 touch_a_grid.qml
+Charge 1.0 charge.qml
+RevealTheWires 1.0 reveal_the_wires.qml

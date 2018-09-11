@@ -192,7 +192,7 @@ function initialise_steps(loader) {
     // TODO: Decide whether we need this savefile checkpoint.
     // saved_progress = progress.get_checkpoint() || {};
     console.log("Warning: Scene progress checkpoint disabled in flow_lib.js");
-    saved_progress = {}
+    saved_progress = {};
 
     if (saved_progress.checkpoint_id === "") {
         saved_progress.checkpoint_id = 0;
