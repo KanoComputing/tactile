@@ -62,21 +62,35 @@ Rectangle {
         visible: touched ? touch1.pressed : true
         pos_x: touched ? touch1.x : 800
         pos_y: touched ? touch1.y : 500
-        color: 'red'
+        color: 'blue'
     }
 
     TouchIndicator {
         visible: touch2.pressed
         pos_x: touch2.x
         pos_y: touch2.y
-        color: 'orange'
+        color: 'red'
     }
 
     TouchIndicator {
         visible: touch3.pressed
         pos_x: touch3.x
         pos_y: touch3.y
+        color: 'green'
+    }
+
+    TouchIndicator {
+        visible: touch4.pressed
+        pos_x: touch4.x
+        pos_y: touch4.y
         color: 'orange'
+    }
+
+    TouchIndicator {
+        visible: touch5.pressed
+        pos_x: touch5.x
+        pos_y: touch5.y
+        color: 'purple'
     }
 
     InstructionText {

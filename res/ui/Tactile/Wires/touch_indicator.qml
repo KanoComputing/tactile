@@ -47,7 +47,6 @@ Item {
             font.pointSize: 20
             lineHeight: 1.1
             color: 'black'
-            //anchors.centerIn: parent
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.margins: label_box.margins

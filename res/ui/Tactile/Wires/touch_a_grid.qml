@@ -44,14 +44,31 @@ Item {
     }
 
     MultiPointTouchArea {
+        id: touch_area
         property int touches: 0
         anchors.fill: parent
         minimumTouchPoints: 1
-        maximumTouchPoints: 1
+        maximumTouchPoints: 10
         touchPoints: [
-            TouchPoint { id: touch1 }
+            TouchPoint {},
+            TouchPoint {},
+            TouchPoint {},
+            TouchPoint {},
+            TouchPoint {},
+            TouchPoint {},
+            TouchPoint {},
+            TouchPoint {},
+            TouchPoint {},
+            TouchPoint {}
         ]
-        onPressed: scene.touch()
+
+        property list<TouchPoint> current_touch_points
+
+        onTouchUpdated: {
+            current_touch_points = touchPoints;
+        }
+
+        onPressed: scene.touch();
     }
 
     function get_charge_count() {
@@ -116,24 +133,31 @@ Item {
         running: true
 
         Repeater {
-            model: 4
+            id: touch_emitters
+            model: touch_area.current_touch_points
 
-            Emitter {
-                property real angle: index * Math.PI / 2
-                property int x_component: Math.sin(angle)
-                property int y_component: Math.cos(angle)
+            Repeater {
+                model: 2
+                property int touch_index: index
+                property TouchPoint touch_point: touch_area.current_touch_points[index]
 
-                x: touch1.x
-                y: touch1.y
-                enabled: touch1.pressed
-                lifeSpan: 750
-                emitRate: 5
-                size: 60
-                velocity: PointDirection {
-                    x: 150 * x_component
-                    xVariation: 100 * x_component
-                    y: 100 * y_component
-                    yVariation: 100 * y_component
+                Emitter {
+                    property real angle: index * Math.PI / 2
+                    property int x_component: Math.sin(angle)
+                    property int y_component: Math.cos(angle)
+
+                    x: touch_point ? touch_point.x : 0
+                    y: touch_point ? touch_point.y : 0
+                    enabled: touch_point ? touch_point.pressed : false
+                    lifeSpan: 750
+                    emitRate: 4
+                    size: 60
+                    velocity: PointDirection {
+                        x: 0
+                        xVariation: 300 * x_component
+                        y: 0
+                        yVariation: 300 * y_component
+                    }
                 }
             }
         }
