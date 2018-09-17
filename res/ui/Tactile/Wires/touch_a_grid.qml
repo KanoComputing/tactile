@@ -65,6 +65,13 @@ Item {
         property list<TouchPoint> current_touch_points
 
         onTouchUpdated: {
+            if (current_touch_points.length === touchPoints.length) {
+                // current_touch_points already contains pointers to all
+                // the points in the update event so don't update to
+                // avoid triggering a refresh
+                return;
+            }
+
             current_touch_points = touchPoints;
         }
 
