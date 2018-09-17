@@ -37,8 +37,9 @@ Item {
 
         InstructionText {
             id: title
-            text: "How Touch Works"
+            text: scene.text
             font.pointSize: 36
+            horizontalAlignment: Text.AlignHCenter
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -48,7 +49,7 @@ Item {
             anchors.top: title.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.topMargin: 30
-            text: "Let's Go"
+            text: scene.next_button_text
         }
     }
 

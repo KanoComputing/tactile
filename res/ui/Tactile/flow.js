@@ -33,6 +33,8 @@ function create_steps() {
 
     new_scene(Tactile.Start.StartScene);
     new_step(function(scene) {
+        scene.text = qsTr("How Touch Works");
+        scene.next_button_text = qsTr("Let's Go");
     }, Tactile.Start.StartScene.signals.done);
 
     /**
