@@ -24,6 +24,7 @@ Rectangle {
     property real animation_min
     property int animation_rising_duration
     property int animation_falling_duration
+    property int min_slider_height: 2 * radius
 
     id: subpixel_slider
 
@@ -63,7 +64,8 @@ Rectangle {
 
     Rectangle {
         width: parent.width
-        height: subpixel_slider.value * parent.height
+        height: subpixel_slider.value * (parent.height - min_slider_height)
+            + min_slider_height
         color: subpixel_slider.pixel_color
         anchors.bottom: parent.bottom
         radius: parent.radius
