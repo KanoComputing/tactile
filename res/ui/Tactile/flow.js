@@ -45,7 +45,7 @@ function create_steps() {
     new_step(function(scene) {
         scene.bg_image = 'Wires/touchscreen.png';
         scene.instructions = qsTr(
-            "There are amazing thigs hidden inside your screen...\n" +
+            "There are amazing things hidden inside your screen...\n" +
             "\n" +
             "Swipe to see them"
         );
@@ -382,7 +382,7 @@ function create_steps() {
     new_scene(Tactile.Start.StartScene);
     new_step(function(scene) {
         scene.text = qsTr(
-            "That's how our touch screen works.\n" +
+            "That's how your touch screen works.\n" +
             "Now go play with it."
         );
         scene.next_button_text = qsTr("Try more");
