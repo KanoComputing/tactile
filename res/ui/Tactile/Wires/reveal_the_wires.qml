@@ -39,7 +39,7 @@ Rectangle {
     }
 
     Canvas {
-        id: myCanvas
+        id: canvas
         anchors.fill: parent
 
         property bool isFirstPaint: true
@@ -48,35 +48,40 @@ Rectangle {
             Canvas.FramebufferObject : Canvas.Image
 
         onPaint: {
-            if (myCanvas.isFirstPaint) {
+            if (canvas.isFirstPaint) {
                 img.visible = true;
 
                 var ctx = getContext('2d')
                 ctx.fillStyle = '#414a50';
                 ctx.fillRect(0, 0, scene.width, scene.height);
                 ctx.globalCompositeOperation = "destination-out";
-                eraseCircle();
-                myCanvas.isFirstPaint = false;
+                erase_circle();
+                canvas.isFirstPaint = false;
                 return;
             }
 
             instructions_text.visible = false;
         }
 
-        function getPercentFilled() {
+        function get_percent_filled() {
             var ctx = getContext('2d'),
                 imageData = ctx.getImageData(0, 0, scene.width, scene.height),
                 len = imageData.data.length,
-                acc = 0;
+                acc = 0,
+                max = 0;
 
             for (var i = 3; i < len; i += 1024) {
-                acc = acc + imageData.data[i];
+                if (imageData.data[i]) {
+                    acc++;
+                }
+
+                max++
             }
 
-            return acc;
+            return 100 * acc / max;
         }
 
-        function eraseCircle() {
+        function erase_circle() {
             var ctx = getContext('2d')
             ctx.beginPath();
             ctx.fillStyle = "white";
@@ -84,7 +89,14 @@ Rectangle {
             ctx.arc(xpos, ypos, radius, 0, 2.0 * Math.PI, false);
             ctx.lineTo(xpos, ypos);
             ctx.fill();
-            myCanvas.requestPaint()
+            canvas.requestPaint()
+        }
+
+        function erase_all() {
+            var ctx = getContext('2d')
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, scene.width, scene.height);
+            canvas.requestPaint()
         }
 
         MouseArea {
@@ -94,22 +106,23 @@ Rectangle {
             onPressed: {
                 xpos = mouseX
                 ypos = mouseY
-                myCanvas.eraseCircle()
+                canvas.erase_circle()
             }
             onReleased: {
-                if (myCanvas.getPercentFilled() === 0) {
+                if (canvas.get_percent_filled() <= 10) {
+                    canvas.erase_all();
                     scene.revealed();
                 }
             }
             onMouseXChanged: {
                 xpos = mouseX
                 ypos = mouseY
-                myCanvas.eraseCircle()
+                canvas.erase_circle()
             }
             onMouseYChanged: {
                 xpos = mouseX
                 ypos = mouseY
-                myCanvas.eraseCircle()
+                canvas.erase_circle()
             }
         }
 
