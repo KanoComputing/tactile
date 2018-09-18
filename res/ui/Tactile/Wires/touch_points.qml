@@ -61,7 +61,6 @@ Rectangle {
 
     TouchIndicator {
         visible: touched ? touch1.pressed : true
-        beacon_enabled: !touched
         pos_x: touched ? touch1.x : 800
         pos_y: touched ? touch1.y : 500
         color: 'blue'
@@ -140,7 +139,7 @@ Rectangle {
             text: quiz_box.question
             anchors.top: parent.top
             anchors.left: parent.left
-            width: 500
+            width: 700
         }
 
         Column {

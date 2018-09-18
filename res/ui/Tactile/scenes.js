@@ -127,6 +127,7 @@ var Tactile = {
             name: 'Wires/touch_a_wire.qml',
             signals: {
                 charges_emitted: 'charges_emitted',
+                touched: 'touched',
                 done: 'done'
             }
         },

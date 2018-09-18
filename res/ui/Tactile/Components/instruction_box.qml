@@ -60,7 +60,7 @@ Item {
             }
             PropertyChanges {
                 target: content_box
-                width: 500
+                width: 700
             }
             PropertyChanges {
                 target: next_btn
@@ -80,7 +80,7 @@ Item {
     Item {
         id: content_box
 
-        width: 390
+        width: 500
         height: next_btn.visible ?
             prompt_text.height + next_btn.height + 30 :
             prompt_text.height

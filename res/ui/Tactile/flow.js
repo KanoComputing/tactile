@@ -99,8 +99,8 @@ function create_steps() {
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt('');
-        scene.max_touches = 10;
-    }, Tactile.Wires.TouchAWire.signals.charges_emitted);
+        scene.timer.sleep(4000);
+    }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt('', {
             button_text: qsTr('Next'),
