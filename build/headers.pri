@@ -12,7 +12,8 @@ HEADER_FILES = \
     display_screen.h \
     hw.h \
     progress.h \
-    touch.h
+    touch.h \
+    tracker.h
 
 for (HEADER, HEADER_FILES) {
     HEADERS *= $$INCLUDEPATH/$$HEADER

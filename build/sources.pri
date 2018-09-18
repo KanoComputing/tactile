@@ -29,7 +29,8 @@ PLATFORM_SRC_FILES = \
     display_screen.cpp \
     hw.cpp \
     progress.cpp \
-    touch.cpp
+    touch.cpp \
+    tracker.cpp
 
 for (SRC, PLATFORM_SRC_FILES) {
     SOURCES *= $$PLATFORM_DIR/$$SRC
