@@ -18,6 +18,7 @@ import Tactile.Wires 1.0
 
 Item {
     signal done()
+    signal charges_emitted()
     signal touched()
 
     id: bg
@@ -25,8 +26,8 @@ Item {
     property int wire_y: 343
     property int max_touches: 5
 
-    function prompt(text) {
-        instructions.text = text
+    function prompt(text, params) {
+        instructions.prompt(text, params)
     }
 
     Image {
@@ -47,7 +48,7 @@ Item {
             touches++;
 
             if (touches > bg.max_touches) {
-                bg.done();
+                bg.charges_emitted();
             }
         }
     }
@@ -109,10 +110,10 @@ Item {
         }
     }
 
-    InstructionText {
+    InstructionBox {
         id: instructions
-        x: 100
-        y: 100
+        state: 'top-left'
+        onClicked: bg.done()
     }
 
 }

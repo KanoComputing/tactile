@@ -12,3 +12,4 @@ module Tactile.Components
 
 NextButton 1.0 next_button.qml
 InstructionText 1.0 instruction_text.qml
+InstructionBox 1.0 instruction_box.qml

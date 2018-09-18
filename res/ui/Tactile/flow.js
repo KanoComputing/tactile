@@ -59,7 +59,10 @@ function create_steps() {
         scene.prompt(qsTr(
             "Your screen is filled with invisible wires made " +
             "of Indium Oxide. Ready to see what they do?"
-        ));
+        ), {
+            button_text: qsTr('Next'),
+            bg_enabled: true
+        });
     }, Tactile.Wires.RevealTheWires.signals.done);
 
     /**
@@ -68,14 +71,19 @@ function create_steps() {
 
     new_scene(Tactile.Wires.TouchAWire);
     new_step(function(scene) {
-        scene.prompt(qsTr("Each wire is filled with electric charges."));
+        scene.prompt(
+            qsTr("Each wire is filled with electric charges."), {
+            bg_enabled: true
+        });
         scene.timer.sleep(2000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt(qsTr(
             "But so is your finger!\n" +
             "Touch the wire to see what happens..."
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.timer.sleep(2000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
@@ -84,12 +92,19 @@ function create_steps() {
         scene.prompt(qsTr(
             "When you touch the sceen the wires can detect the electric " +
             "charge in your finger"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.timer.sleep(2000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt('');
         scene.max_touches = 10;
+    }, Tactile.Wires.TouchAWire.signals.charges_emitted);
+    new_step(function(scene) {
+        scene.prompt('', {
+            button_text: qsTr('Next'),
+        });
     }, Tactile.Wires.TouchAWire.signals.done);
 
     /**
@@ -101,7 +116,9 @@ function create_steps() {
         scene.prompt(qsTr(
             "Each wire keeps an eye out for your finger\n" +
             "Touch the screen again"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.timer.sleep(1000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
@@ -110,16 +127,25 @@ function create_steps() {
         scene.prompt(qsTr(
             "Together the wires can figure out the exact points that " +
             "you're touching"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.timer.sleep(6000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt(qsTr(
             "Try touching multiple places\n" +
             "Your screen can detect up to 10 touch points!"
-        ));
-        scene.timer.sleep(20000);
+        ), {
+            bg_enabled: true
+        });
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+        scene.prompt('', {
+            button_text: qsTr('Next'),
+        });
+    }, Tactile.Wires.TouchAGrid.signals.done);
 
     /**
      * Touch points
@@ -130,7 +156,9 @@ function create_steps() {
         scene.prompt(qsTr(
             "Your screen sends messages to your computer's brain telling it " +
             "where you are touching"
-        ));
+        ), {
+            bg_enabled: true
+        });
         // Give a couple of seconds to read the instructions
         scene.timer.sleep(2000);
     }, Tactile.Sleep.signals.wait_over);
@@ -152,12 +180,10 @@ function create_steps() {
                 qsTr('Where your finger is on the screen'),
                 qsTr('How much electricity is in your finger')
             ],
-            answer: 1
+            answer: 1,
+            bg_enabled: true
         });
     }, Tactile.Wires.TouchPoints.signals.correct_response);
-    new_step(function(scene) {
-        scene.timer.sleep(2000);
-    }, Tactile.Sleep.signals.wait_over);
 
     /**
      * Reveal the colors
@@ -187,7 +213,9 @@ function create_steps() {
         scene.prompt(qsTr(
             "Beneath the wires, your screen is full of 1 million colorful " +
             "little lights... called pixels"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.timer.sleep(4000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
@@ -197,14 +225,18 @@ function create_steps() {
             "and pixels!\n" +
             "\n" +
             "Can you find pixel 300, 300?"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.resetTarget(300, 300, true);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         scene.prompt(qsTr(
             "Did you see that???\n" +
             "That's a pixel!"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.timer.sleep(4000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
@@ -212,42 +244,54 @@ function create_steps() {
         scene.prompt(qsTr(
             "Every pixel has an address.\n" +
             "Can you touch pixel 500, 300?"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.resetTarget(500, 300);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         // Center mouth
         scene.prompt(qsTr(
             "Can you touch pixel 400, 500?"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.resetTarget(400, 500);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         // Center-right mouth
         scene.prompt(qsTr(
             "Can you touch pixel 500, 485?"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.resetTarget(475, 485);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         // Right mouth
         scene.prompt(qsTr(
             "Can you touch pixel 550, 450?"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.resetTarget(550, 450);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         // Center-left mouth
         scene.prompt(qsTr(
             "Can you touch pixel 320, 485?"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.resetTarget(320, 485);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         // Left mouth
         scene.prompt(qsTr(
             "Can you touch pixel 250, 450?"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.resetTarget(250, 450);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
@@ -267,32 +311,41 @@ function create_steps() {
         scene.prompt(qsTr(
             "This is what a pixel looks like up close!\n" +
             "It's made up of little red, green and blue lights"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.timer.sleep(6000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
-        scene.prompt(qsTr(
-            "Swipe up and down to change the color"
-        ));
+        scene.prompt(
+            qsTr("Swipe up and down to change the color"), {
+            bg_enabled: true
+        });
         scene.timer.sleep(4000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt(qsTr(
             "The red, green and blue lights can work together to make any " +
             "color!"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.timer.sleep(4000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.set_target(1, 0.3, 0);
-        scene.prompt(qsTr("Can you try to make orange?"));
-    }, Tactile.Pixels.SubpixelSimulator.signals.done);
+        scene.prompt(
+            qsTr("Can you try to make orange?"), {
+            bg_enabled: true
+        });
+    }, Tactile.Pixels.SubpixelSimulator.signals.color_matched);
     new_step(function(scene) {
-        scene.prompt(qsTr(
-            "Nice work!"
-        ));
-        scene.timer.sleep(3000);
-    }, Tactile.Sleep.signals.wait_over);
+        scene.prompt(
+            qsTr("Nice work!"), {
+            bg_enabled: true,
+            button_text: qsTr('Next')
+        });
+    }, Tactile.Pixels.SubpixelSimulator.signals.done);
 
     /**
      * Pixel divider
@@ -303,7 +356,9 @@ function create_steps() {
         scene.prompt(qsTr(
             "These pixels come together to make images.\n" +
             "Tap the pixel to see this happen"
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.timer.sleep(3000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
@@ -314,7 +369,9 @@ function create_steps() {
     new_step(function(scene) {
         scene.prompt(qsTr(
             'The pixels join to form an image.'
-        ));
+        ), {
+            bg_enabled: true
+        });
         scene.timer.sleep(5000);
     }, Tactile.Sleep.signals.wait_over);
 

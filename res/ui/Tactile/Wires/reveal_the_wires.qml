@@ -26,9 +26,8 @@ Rectangle {
     property alias bg_image: img.source
     property alias enabled: mouse_area.enabled
 
-    function prompt(text) {
-        desc.visible = !!text;
-        prompt_text.text = text;
+    function prompt(text, params) {
+        desc.prompt(text, params);
     }
 
     id: scene
@@ -124,31 +123,8 @@ Rectangle {
 
     }
 
-    Item {
+    InstructionBox {
         id: desc
-        visible: false
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.margins: 30
-
-        width: 300
-
-        InstructionText {
-            id: prompt_text
-            text: "Your screen is filled with invisible wires made " +
-                  "of Indium Oxide. Ready to see what the do?"
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: next_btn.top
-            anchors.bottomMargin: 30
-        }
-
-        NextButton {
-            id: next_btn
-            onClicked: scene.done()
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: parent.bottom
-            text: "Next"
-        }
+        onClicked: scene.done()
     }
 }
