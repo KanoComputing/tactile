@@ -16,9 +16,12 @@ Item {
     property alias color: indicator.color
     property int size: 100
     property alias text: label.text
+    property alias beacon_enabled: beacon.visible
 
     property int pos_x
     property int pos_y
+
+    id: root
 
     x: pos_x - (indicator.x + indicator.width / 2)
     y: pos_y - (indicator.y + indicator.height / 2)
@@ -60,5 +63,39 @@ Item {
         radius: width / 2
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
+
+        Rectangle {
+            id: beacon
+            z: -1
+            color: 'transparent'
+            border.color: 'white'
+            border.width: 5
+
+            property int size: root.size
+            property int duration: 1000
+            radius: size
+            height: size
+            width: size
+            anchors.centerIn: parent
+
+            ParallelAnimation {
+                running: true
+                loops: Animation.Infinite
+                NumberAnimation {
+                    target: beacon
+                    properties: 'size'
+                    from: root.size
+                    to: root.size + 100
+                    duration: beacon.duration
+                }
+                NumberAnimation {
+                    target: beacon
+                    properties: 'opacity'
+                    from: 1.0
+                    to: 0.0
+                    duration: beacon.duration
+                }
+            }
+        }
     }
 }
