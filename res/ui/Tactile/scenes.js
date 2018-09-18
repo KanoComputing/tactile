@@ -160,6 +160,13 @@ var Tactile = {
                 done: 'done'
             }
         },
+        PixelDivider: {
+            name: 'Pixels/pixel_divider.qml',
+            signals: {
+                touch: 'touch',
+                done: 'done'
+            }
+        },
     },
     Digitizer: {
         DigitizerVisualizer: {
