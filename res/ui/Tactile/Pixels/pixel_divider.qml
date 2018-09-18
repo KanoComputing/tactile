@@ -20,18 +20,14 @@ Item {
 
     id: scene
 
-    function prompt(text) {
-        instructions.text = text;
+    function prompt(text, params) {
+        instructions.prompt(text, params)
     }
 
-    InstructionText {
+
+    InstructionBox {
         id: instructions
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.margins: 30
-        width: parent.width
-        color: "black"
-        z: 100
+        state: 'top-left'
     }
 
     Image {

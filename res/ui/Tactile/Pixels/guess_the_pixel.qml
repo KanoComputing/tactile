@@ -20,8 +20,8 @@ Rectangle {
     signal done()
     signal target_hit()
 
-    function prompt(text) {
-        instructions.text = text;
+    function prompt(text, params) {
+        instructions.prompt(text, params)
     }
 
     property bool transitioning: false
@@ -117,12 +117,8 @@ Rectangle {
         }
     }
 
-    InstructionText {
+    InstructionBox {
         id: instructions
-        color: "black"
-        width: parent.width / 3
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.margins: 30
+        onClicked: scene.done()
     }
 }

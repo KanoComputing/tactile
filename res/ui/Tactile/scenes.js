@@ -126,6 +126,7 @@ var Tactile = {
         TouchAWire: {
             name: 'Wires/touch_a_wire.qml',
             signals: {
+                charges_emitted: 'charges_emitted',
                 done: 'done'
             }
         },
@@ -150,6 +151,7 @@ var Tactile = {
             name: 'Pixels/subpixel_simulator.qml',
             signals: {
                 target_hit: 'target_hit',
+                color_matched: 'color_matched',
                 done: 'done'
             }
         },

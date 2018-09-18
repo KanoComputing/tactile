@@ -22,8 +22,8 @@ Rectangle {
     signal pressed()
     signal correct_response()
 
-    function prompt(text) {
-        instructions_text.text = text || '';
+    function prompt(text, params) {
+        instructions.prompt(text, params)
     }
 
     function quiz(params) {
@@ -33,6 +33,7 @@ Rectangle {
         quiz_box.question = params.question || '';
         quiz_box.responses = params.responses || [];
         quiz_box.answer = params.answer || '';
+        quiz_bg.visible = params.bg_enabled || false;
     }
 
     id: scene
@@ -94,26 +95,38 @@ Rectangle {
         color: 'purple'
     }
 
-    InstructionText {
-        id: instructions_text
-        width: parent.width / 2
-        wrapMode: Text.WordWrap
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.margins: 30
+    InstructionBox {
+        id: instructions
+        state: 'top-left'
+        onClicked: scene.done()
     }
 
     Rectangle {
+        property int margins: 30
+
+        id: quiz_bg
+        color: 'white'
+        width: quiz_box.width + margins * 2
+        height: quiz_box.height + margins * 2
+        anchors.centerIn: quiz_box
+        visible: quiz_box.visible
+        radius: 10
+        opacity: 0.8
+    }
+
+    Item {
         id: quiz_box
 
         property string question: ''
         property var responses: []
         property int answer
+        width: childrenRect.width
+        height: childrenRect.height
 
         visible: false
         anchors.top: parent.top
         anchors.left: parent.left
-        anchors.margins: 30
+        anchors.margins: 90 + quiz_bg.margins
 
         PixelExplosion {
             id: exploder
@@ -123,15 +136,16 @@ Rectangle {
 
         InstructionText {
             id: quiz_question
+            color: quiz_bg.visible ? 'black' : 'white'
             text: quiz_box.question
             anchors.top: parent.top
             anchors.left: parent.left
+            width: 500
         }
 
         Column {
             anchors.top: quiz_question.bottom
             anchors.left: parent.left
-            anchors.topMargin: 30
 
             Repeater {
                 id: quiz_answers
@@ -147,6 +161,7 @@ Rectangle {
 
                     InstructionText {
                         id: response_text
+                        color: quiz_bg.visible ? 'black' : 'white'
                         anchors.top: parent.top
                         anchors.left: parent.left
                         anchors.margins: 10

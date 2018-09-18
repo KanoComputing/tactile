@@ -20,8 +20,8 @@ Item {
     signal done()
     signal touch()
 
-    function prompt(text) {
-        instructions_text.text = text || '';
+    function prompt(text, params) {
+        instructions.prompt(text, params)
     }
 
     id: scene
@@ -33,14 +33,10 @@ Item {
         anchors.fill: parent
     }
 
-    InstructionText {
-        id: instructions_text
-        width: parent.width / 2
-        wrapMode: Text.WordWrap
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.margins: 30
-        z: 1
+    InstructionBox {
+        id: instructions
+        state: 'top-left'
+        onClicked: scene.done()
     }
 
     MultiPointTouchArea {

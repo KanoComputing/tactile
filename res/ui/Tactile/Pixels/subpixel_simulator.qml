@@ -16,6 +16,7 @@ import Tactile.Components 1.0
 
 Rectangle {
     signal done()
+    signal color_matched()
 
     property int elapsed_time: 0
     property int box_height: 400
@@ -27,8 +28,8 @@ Rectangle {
     property alias green: green_pixel.value
     property alias blue: blue_pixel.value
 
-    function prompt(text) {
-        instructions.text = text;
+    function prompt(text, params) {
+        instructions.prompt(text, params)
     }
 
     property vector3d target_color
@@ -50,7 +51,7 @@ Rectangle {
 
             // TODO: Use something more color-ful than the Euclidian metric
             if (target_color.fuzzyEquals(col, tolerance)) {
-                bg.done();
+                bg.color_matched();
             }
         }
     }
@@ -128,12 +129,11 @@ Rectangle {
         }
     }
 
-    InstructionText {
+    InstructionBox {
         id: instructions
-        horizontalAlignment: Text.AlignHCenter
+        state: 'horizontal-center'
+        onClicked: bg.done()
         anchors.top: subpixel.bottom
         anchors.topMargin: 30
-        anchors.horizontalCenter: parent.horizontalCenter
-        color: "black"
     }
 }
