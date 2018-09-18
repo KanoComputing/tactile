@@ -291,7 +291,31 @@ function create_steps() {
         scene.prompt(qsTr(
             "Nice work!"
         ));
-        scene.timer.sleep(6000);
+        scene.timer.sleep(3000);
+    }, Tactile.Sleep.signals.wait_over);
+
+    /**
+     * Pixel divider
+     */
+
+    new_scene(Tactile.Pixels.PixelDivider);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            "These pixels come together to make images.\n" +
+            "Tap the pixel to see this happen"
+        ));
+        scene.timer.sleep(3000);
+    }, Tactile.Sleep.signals.wait_over);
+    new_step(function(scene) {
+    }, Tactile.Pixels.PixelDivider.signals.touch);
+    new_step(function(scene) {
+        scene.prompt('');
+    }, Tactile.Pixels.PixelDivider.signals.done);
+    new_step(function(scene) {
+        scene.prompt(qsTr(
+            'The pixels join to form an image.'
+        ));
+        scene.timer.sleep(5000);
     }, Tactile.Sleep.signals.wait_over);
 
     /**

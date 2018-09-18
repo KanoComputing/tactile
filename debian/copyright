@@ -5,6 +5,10 @@ Files: *
 Copyright: 2018 Kano Computing Ltd.
 License: GPL-2+
 
+Files: res/ui/Tactile/Pixels/map.jpg
+Copyright: 2011 Daniel R. Strebe
+License: Creative Commons Atribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+
 Files: *.png
 Copyright: 2018 Kano Computing Ltd.
 License: All rights reserved
