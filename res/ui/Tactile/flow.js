@@ -58,7 +58,7 @@ function create_steps() {
     new_step(function(scene) {
         scene.prompt(qsTr(
             "Your screen is filled with invisible wires made " +
-            "of Indium Oxide. Ready to see what the do?"
+            "of Indium Oxide. Ready to see what they do?"
         ));
     }, Tactile.Wires.RevealTheWires.signals.done);
 
@@ -167,7 +167,7 @@ function create_steps() {
     new_step(function(scene) {
         scene.bg_image = 'Pixels/rainbow.png';
         scene.instructions = qsTr(
-            "Did you see those points of light???\n" +
+            "Did you see those points of light?\n" +
             "\n" +
             "Swipe to chase them into your screen"
         );
