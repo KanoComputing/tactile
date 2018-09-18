@@ -64,7 +64,7 @@ Item {
 
             id: charge
             x: start_x
-            y: wire_y
+            y: wire_y + height
         }
     }
 
