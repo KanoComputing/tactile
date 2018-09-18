@@ -355,7 +355,7 @@ function create_steps() {
     new_step(function(scene) {
         scene.prompt(qsTr(
             "These pixels come together to make images.\n" +
-            "Tap the pixel to see this happen"
+            "Tap the screen to see this happen"
         ), {
             bg_enabled: true
         });
