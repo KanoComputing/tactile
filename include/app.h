@@ -21,6 +21,7 @@
 #include "hw.h"
 #include "progress.h"
 #include "touch.h"
+#include "tracker.h"
 
 
 class App : public QGuiApplication
@@ -29,6 +30,7 @@ class App : public QGuiApplication
 
     public:
         App(int &argc, char **argv);
+        virtual ~App();
 
     protected:
         QQmlApplicationEngine engine;
@@ -37,6 +39,7 @@ class App : public QGuiApplication
         Progress progress;
         Touch touch;
         Logger logger;
+        Tracker tracker;
 
         void clear_cursor_stack();
 

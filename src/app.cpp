@@ -19,8 +19,9 @@
 
 
 App::App(int &argc, char **argv) :
-  QGuiApplication(argc, argv),
-  logger("qml")
+    QGuiApplication(argc, argv),
+    logger("qml"),
+    tracker(this)
 {
     QStringList include_paths =
 #ifdef QML_IMPORT_PATHS
@@ -48,11 +49,19 @@ App::App(int &argc, char **argv) :
     ctx->setContextProperty("logger", &this->logger);
     ctx->setContextProperty("progress", &this->progress);
     ctx->setContextProperty("touch", &this->touch);
+    ctx->setContextProperty("tracker", &this->tracker);
 
     Logger::set_app_name("tactile");
     Logger::install_syslog();
 
+    this->tracker.start_session();
     this->engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
+}
+
+
+App::~App()
+{
+    this->tracker.end_session();
 }
 
 

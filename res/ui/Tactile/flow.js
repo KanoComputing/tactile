@@ -9,7 +9,7 @@
 
 
 /* jshint undef: true, unused: true */
-/* globals Qt, qsTr, new_scene, new_step, initialise_steps, run_steps, repeat_step, skip_step, Tactile, Colours, app, display, hw, progress */
+/* globals Qt, qsTr, new_scene, new_step, initialise_steps, run_steps, repeat_step, skip_step, Tactile, Colours, app, display, hw, progress, tracker */
 
 
 Qt.include('scenes.js');
@@ -302,6 +302,7 @@ function create_steps() {
 
     new_step(function(scene) {
         progress.clear_checkpoint();
+        tracker.track_action('tactile-complete');
     });
 
     new_step(function() {
