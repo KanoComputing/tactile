@@ -319,6 +319,19 @@ function create_steps() {
     }, Tactile.Sleep.signals.wait_over);
 
     /**
+     * End screen
+     */
+
+    new_scene(Tactile.Start.StartScene);
+    new_step(function(scene) {
+        scene.text = qsTr(
+            "That's how our touch screen works.\n" +
+            "Now go play with it."
+        );
+        scene.next_button_text = qsTr("Try more");
+    }, Tactile.Start.StartScene.signals.done);
+
+    /**
      * Finalising
      */
 
