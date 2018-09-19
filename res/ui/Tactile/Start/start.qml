@@ -20,6 +20,7 @@ Item {
 
     property string text
     property string next_button_text
+    property string note_text
 
     id: scene
 
@@ -51,6 +52,14 @@ Item {
             anchors.topMargin: 30
             text: scene.next_button_text
         }
+    }
+
+    InstructionText {
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 100
+        font.pointSize: 20
+        text: scene.note_text
     }
 
 }

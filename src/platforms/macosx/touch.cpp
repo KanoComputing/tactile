@@ -12,7 +12,7 @@
 #include "touch.h"
 
 
-Q_INVOKABLE bool Touch::is_touch_supported(const QString username)
+Q_INVOKABLE bool Touch::is_touch_supported()
 {
-    return true;
+    return false;
 }
