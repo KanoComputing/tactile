@@ -8,6 +8,8 @@
  */
 
 
+#include <QProcess>
+
 #include "touch.h"
 
 
@@ -23,9 +25,11 @@
  * the current RPi configuration. In this scenario, we wouldn't need to pass
  * the username.
  */
-Q_INVOKABLE bool Touch::is_touch_supported(const QString username)
+Q_INVOKABLE bool Touch::is_touch_supported()
 {
-    // TODO: Fix the call to touch-detect but without the Launcher
-    return true;
-    // return launcher.start_app("touch-detect", username);
+    QProcess proc;
+    proc.start("touch-detect");
+    proc.waitForFinished();
+
+    return proc.exitCode() == 0;
 }

@@ -22,7 +22,7 @@ class Touch : public QObject
     public:
         Touch(QObject *parent = nullptr) : QObject(parent) {};
 
-        Q_INVOKABLE bool is_touch_supported(const QString username = "");
+        Q_INVOKABLE bool is_touch_supported();
 };
 
 

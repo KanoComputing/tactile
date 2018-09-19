@@ -9,7 +9,7 @@
 
 
 /* jshint undef: true, unused: true */
-/* globals Qt, qsTr, new_scene, new_step, initialise_steps, run_steps, repeat_step, skip_step, Tactile, Colours, app, display, hw, progress, tracker */
+/* globals Qt, qsTr, new_scene, new_step, initialise_steps, run_steps, repeat_step, skip_step, Tactile, Colours, app, display, hw, progress, touch, tracker */
 
 
 Qt.include('scenes.js');
@@ -18,12 +18,13 @@ Qt.include('colour_palette.js');
 
 
 function create_steps() {
-    var saved_progress = progress.get_checkpoint();
+    var saved_progress = progress.get_checkpoint(),
+        touch_supported = touch.is_touch_supported();
 
     /* purely to follow if and where we restore Tactile from a premature exit */
     console.log("flow saved progress = " + saved_progress.checkpoint_id);
 
-    if (Qt.platform.os == 'linux') {
+    if (touch_supported) {
         app.hide_cursor();
     }
 
@@ -35,6 +36,10 @@ function create_steps() {
     new_step(function(scene) {
         scene.text = qsTr("How Touch Works");
         scene.next_button_text = qsTr("Let's Go");
+
+        if (!touch_supported) {
+            scene.note_text = qsTr("Optimised for touch");
+        }
     }, Tactile.Start.StartScene.signals.done);
 
     /**
