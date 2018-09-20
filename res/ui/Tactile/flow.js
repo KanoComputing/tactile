@@ -237,7 +237,7 @@ function create_steps() {
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         scene.prompt(qsTr(
-            "Did you see that???\n" +
+            "Do you see that?\n" +
             "That's a pixel!"
         ), {
             bg_enabled: true
