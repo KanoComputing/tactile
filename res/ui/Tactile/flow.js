@@ -359,7 +359,7 @@ function create_steps() {
     new_scene(Tactile.Pixels.PixelDivider);
     new_step(function(scene) {
         scene.prompt(qsTr(
-            "These pixels come together to make images.\n" +
+            "Pixels can work together to make images...\n" +
             "Tap the screen to see this happen"
         ), {
             bg_enabled: true
