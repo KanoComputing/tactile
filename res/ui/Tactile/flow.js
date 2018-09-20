@@ -364,9 +364,19 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.timer.sleep(3000);
+        scene.timer.sleep(2000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
+    }, Tactile.Pixels.PixelDivider.signals.touch);
+    new_step(function(scene) {
+        scene.prompt(qsTr("Keep tapping!"), {
+            bg_enabled: true
+        });
+    }, Tactile.Pixels.PixelDivider.signals.touch);
+    new_step(function(scene) {
+        scene.prompt(qsTr("Keep tapping!"), {
+            bg_enabled: true
+        });
     }, Tactile.Pixels.PixelDivider.signals.touch);
     new_step(function(scene) {
         scene.prompt('');
