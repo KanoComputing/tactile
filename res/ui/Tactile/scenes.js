@@ -160,6 +160,7 @@ var Tactile = {
             name: 'Pixels/guess_the_pixel.qml',
             signals: {
                 target_hit: 'target_hit',
+                next: 'next',
                 done: 'done'
             }
         },

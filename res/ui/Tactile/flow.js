@@ -219,11 +219,12 @@ function create_steps() {
             "Beneath the wires, your screen is full of 1 million colorful " +
             "little lights... called pixels"
         ), {
-            bg_enabled: true
+            bg_enabled: true,
+            button_text: qsTr('Next')
         });
-        scene.timer.sleep(4000);
-    }, Tactile.Sleep.signals.wait_over);
+    }, Tactile.Pixels.GuessThePixel.signals.next);
     new_step(function(scene) {
+        scene.fade_color();
         // Left eye
         scene.prompt(qsTr(
             "Let's bring the two layers of the screen together - touch " +
