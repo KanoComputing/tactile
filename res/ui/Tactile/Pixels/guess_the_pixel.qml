@@ -18,10 +18,15 @@ import Tactile.Pixels 1.0
 
 Rectangle {
     signal done()
+    signal next()
     signal target_hit()
 
     function prompt(text, params) {
         instructions.prompt(text, params)
+    }
+
+    function fade_color() {
+        color_fade.running = true;
     }
 
     property bool transitioning: false
@@ -49,13 +54,28 @@ Rectangle {
     }
 
     Image {
+        id: bw_ruler
+        source: "blank_ruler.png"
+        anchors.centerIn: parent
+    }
+
+    Image {
+        id: color_ruler
         source: "rainbow.png"
         anchors.centerIn: parent
+        z: 1
         transform: Scale {
             id: img_transform
             origin.x: target_x
             origin.y: target_y
 
+        }
+
+        NumberAnimation on opacity {
+            id: color_fade
+            running: false
+            from: 1
+            to: 0
         }
 
         SequentialAnimation {
@@ -119,6 +139,6 @@ Rectangle {
 
     InstructionBox {
         id: instructions
-        onClicked: scene.done()
+        onClicked: bg.next()
     }
 }
