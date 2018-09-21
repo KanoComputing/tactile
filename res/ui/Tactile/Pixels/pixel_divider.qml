@@ -32,7 +32,7 @@ Item {
 
     Image {
             id: img
-            source: 'map.jpg'
+            source: 'ckt.png'
             visible: false
     }
 
