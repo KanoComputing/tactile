@@ -46,6 +46,21 @@ ApplicationWindow {
         width: parent.width
         height: parent.height
 
+        Image {
+            z: 10
+            anchors.top: parent.top
+            anchors.left: parent.left
+            source: close_area.containsMouse ?
+                'home-button-hover.png' : 'home-button-normal.png'
+
+            MouseArea {
+                id: close_area
+                anchors.fill: parent
+                hoverEnabled: true
+                onClicked: Qt.quit()
+            }
+        }
+
         Flickable {
             z: 1
             id: scroll
