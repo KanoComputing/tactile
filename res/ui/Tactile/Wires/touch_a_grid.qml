@@ -24,6 +24,8 @@ Item {
         instructions.prompt(text, params)
     }
 
+    property int charge_size: 30
+
     id: scene
     height: 1280  // FIXME: Hardcoded otherwise height is 0 and can't be used
 
@@ -102,8 +104,8 @@ Item {
                 is_horizontal: true
                 min_pos: Math.random() > 0.5 ? 0 : scene.width
                 max_pos: min_pos == 0 ? scene.width : 0
+                size: scene.charge_size
 
-                id: charge
                 x: Math.round(Math.random() * scene.width)
                 y: h_line_charges.row_y
             }
@@ -123,8 +125,8 @@ Item {
                 is_horizontal: false
                 min_pos: Math.random() > 0.5 ? 0 : scene.height
                 max_pos: min_pos == 0 ? scene.height : 0
+                size: scene.charge_size
 
-                id: charge
                 x: v_line_charges.col_x
                 y: Math.round(Math.random() * scene.height)
             }
@@ -154,7 +156,7 @@ Item {
                     enabled: touch_point ? touch_point.pressed : false
                     lifeSpan: 750
                     emitRate: 4
-                    size: 60
+                    size: scene.charge_size
                     velocity: PointDirection {
                         x: 0
                         xVariation: 300 * x_component
@@ -166,7 +168,7 @@ Item {
         }
 
         ImageParticle {
-            source: "charge.png"
+            source: 'charge-positive.png'
             alpha: 1.0
         }
     }

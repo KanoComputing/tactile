@@ -12,27 +12,21 @@
 import QtQuick 2.0
 
 
-Rectangle {
+Item {
     property int is_positive: Math.random() > 0.5
     property bool is_horizontal: true
     property int min_pos
     property int max_pos
+    property int size: 30
 
     id: charge
 
-    width: 30
-    height: 30
-    radius: width / 2
-    color: is_positive ? 'blue' : 'red'
+    width: size
+    height: size
 
-    Text {
-        font.family: 'Bariol'
-        font.pointSize: 18
-        font.weight: Font.Bold
-        color: 'white'
-        text: is_positive ? '+' : '-'
-        horizontalAlignment: Text.AlignHCenter
-        anchors.centerIn: parent
+    Image {
+        source: is_positive ? 'charge-positive.png' : 'charge-negative.png'
+        anchors.fill: parent
     }
 
     SequentialAnimation on x {

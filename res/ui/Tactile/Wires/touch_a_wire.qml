@@ -55,15 +55,17 @@ Item {
 
 
     Repeater {
+        id: charge_repeater
         model: 8
+        property int size: 30
 
         Charge {
             is_horizontal: true
             property int start_x: Math.round(Math.random() * bg.width)
+            size: charge_repeater.size
             min_pos: Math.random() > 0.5 ? 0 : bg.width
             max_pos: min_pos == 0 ? bg.width : 0
 
-            id: charge
             x: start_x
             y: wire_y + height
         }
@@ -79,11 +81,11 @@ Item {
             id: emit_right
             // Move emitter out from under finger (assume fingers are 30px wide)
             x: touch1.x + 15
-            y: wire_y + size / 2
+            y: wire_y + 1.5 * size
             enabled: touch1.pressed
             lifeSpan: 750
             emitRate: 5
-            size: 60
+            size: charge_repeater.size
             velocity: PointDirection {
                 x: 150
                 xVariation: 100
@@ -93,11 +95,11 @@ Item {
             id: emit_left
             // Move emitter out from under finger (assume fingers are 30px wide)
             x: touch1.x + 15
-            y: wire_y + size / 2
+            y: wire_y + 1.5 * size
             enabled: touch1.pressed
             lifeSpan: 750
             emitRate: 5
-            size: 60
+            size: charge_repeater.size
             velocity: PointDirection {
                 x: -150
                 xVariation: 100
@@ -105,7 +107,7 @@ Item {
         }
 
         ImageParticle {
-            source: "charge.png"
+            source: 'charge-positive.png'
             alpha: 1.0
         }
     }
