@@ -22,7 +22,7 @@ Rectangle {
     property int box_height: 400
 
     property bool animation_enabled: true
-    property real tolerance: 0.1
+    property real tolerance: 0.15
 
     property alias red: red_pixel.value
     property alias green: green_pixel.value

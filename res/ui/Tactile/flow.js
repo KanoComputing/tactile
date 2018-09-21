@@ -339,7 +339,7 @@ function create_steps() {
         scene.timer.sleep(4000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
-        scene.set_target(1, 0.3, 0);
+        scene.set_target(0.95, 0.4, 0.1);
         scene.prompt(
             qsTr("Can you try to make orange?"), {
             bg_enabled: true
