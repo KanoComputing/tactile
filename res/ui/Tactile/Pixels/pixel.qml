@@ -14,7 +14,7 @@ import QtQuick 2.0
 
 Rectangle {
     property real hue: 1
-    property int size: 10
+    property int size: 2
 
     SequentialAnimation on hue {
         loops: Animation.Infinite
