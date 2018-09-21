@@ -1,8 +1,8 @@
 {
     "title": "How Touch Works",
-    "tagline": "TODO",
-    "description": "TODO",
-    "slug": "files",
+    "tagline": "Examine your touch screen",
+    "description": "Examine your touch screen",
+    "slug": "tactile",
 
     "icon": "tactile-app",
     "colour": "#7fa9cf",
