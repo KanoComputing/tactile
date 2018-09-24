@@ -60,7 +60,7 @@ Rectangle {
     }
 
     TouchIndicator {
-        visible: touched ? touch1.pressed : true
+        visible: touch1.pressed
         pos_x: touched ? touch1.x : 800
         pos_y: touched ? touch1.y : 500
         color: 'blue'

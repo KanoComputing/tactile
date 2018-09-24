@@ -147,8 +147,12 @@ function create_steps() {
         scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
-        scene.prompt('', {
+        scene.prompt(qsTr(
+            "Next, the wires get together and send messages to your " +
+            "computer's brain..."
+        ), {
             button_text: qsTr('Next'),
+            bg_enabled: true
         });
     }, Tactile.Wires.TouchAGrid.signals.done);
 
@@ -159,8 +163,7 @@ function create_steps() {
     new_scene(Tactile.Wires.TouchPoints);
     new_step(function(scene) {
         scene.prompt(qsTr(
-            "Your screen sends messages to your computer's brain telling it " +
-            "where you are touching"
+            "Touch with 5 fingers to see the secret messages!"
         ), {
             bg_enabled: true
         });
@@ -172,9 +175,6 @@ function create_steps() {
     }, Tactile.Wires.TouchPoints.signals.pressed);
     new_step(function(scene) {
         scene.prompt();
-        scene.timer.sleep(4000);
-    }, Tactile.Sleep.signals.wait_over);
-    new_step(function(scene) {
         scene.quiz({
             question: qsTr(
                 'What do those x and y numbers mean?\n' +
@@ -189,6 +189,9 @@ function create_steps() {
             bg_enabled: true
         });
     }, Tactile.Wires.TouchPoints.signals.correct_response);
+    new_step(function(scene) {
+        scene.timer.sleep(250);
+    }, Tactile.Sleep.signals.wait_over);
 
     /**
      * Reveal the colors
