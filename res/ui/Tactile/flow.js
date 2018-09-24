@@ -234,7 +234,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.resetTarget(300, 300, true);
+        scene.reset_target(300, 300, true);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         scene.prompt(qsTr(
@@ -253,7 +253,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.resetTarget(500, 300);
+        scene.reset_target(500, 300);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         // Center mouth
@@ -262,7 +262,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.resetTarget(400, 500);
+        scene.reset_target(400, 500);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         // Center-right mouth
@@ -271,7 +271,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.resetTarget(475, 485);
+        scene.reset_target(475, 485);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         // Right mouth
@@ -280,7 +280,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.resetTarget(550, 450);
+        scene.reset_target(550, 450);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         // Center-left mouth
@@ -289,7 +289,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.resetTarget(320, 485);
+        scene.reset_target(320, 485);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         // Left mouth
@@ -298,7 +298,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.resetTarget(250, 450);
+        scene.reset_target(250, 450);
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         scene.prompt('');

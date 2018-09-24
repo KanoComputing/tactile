@@ -36,11 +36,11 @@ Rectangle {
 
     id: bg
 
-    property int target_x: 0
-    property int target_y: 0
+    property int target_x: -1
+    property int target_y: -1
     property int tolerance: 100
 
-    function resetTarget(x, y, hint) {
+    function reset_target(x, y, hint) {
         target_x = x;
         target_y = y;
 
@@ -125,6 +125,10 @@ Rectangle {
             TouchPoint { id: touch1 }
         ]
         onPressed: {
+            if (target_x < 0 && target_y < 0) {
+                return;
+            }
+
             var dist = distance(touch1.x, touch1.y, target_x, target_y);
 
             if (dist < bg.tolerance) {
@@ -132,7 +136,13 @@ Rectangle {
                     'x': target_x,
                     'y': target_y
                 });
-                bg.target_hit()
+                target_x = -1;
+                target_y = -1;
+
+                sound_success.play();
+                bg.target_hit();
+            } else {
+                sound_failure.play();
             }
         }
     }
