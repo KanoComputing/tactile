@@ -14,5 +14,5 @@
     "launch_command": "tactile",
     "overrides": [],
 
-    "priority": 1050
+    "priority": 680
 }
