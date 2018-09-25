@@ -16,6 +16,7 @@
 #include <QDebug>
 
 #include "app.h"
+#include "home_button.h"
 
 
 App::App(int &argc, char **argv) :
@@ -54,6 +55,7 @@ App::App(int &argc, char **argv) :
     Logger::set_app_name("tactile");
     Logger::install_syslog();
 
+    HomeButton::hide_home_button();
     this->tracker.start_session();
     this->engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
 }
@@ -61,6 +63,7 @@ App::App(int &argc, char **argv) :
 
 App::~App()
 {
+    HomeButton::show_home_button();
     this->tracker.end_session();
 }
 
