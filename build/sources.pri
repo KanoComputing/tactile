@@ -27,6 +27,7 @@ macx {
 
 PLATFORM_SRC_FILES = \
     display_screen.cpp \
+    home_button.cpp \
     hw.cpp \
     progress.cpp \
     touch.cpp \

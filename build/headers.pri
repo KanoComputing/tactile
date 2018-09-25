@@ -10,6 +10,7 @@ INCLUDEPATH += $$PWD/../include
 HEADER_FILES = \
     app.h \
     display_screen.h \
+    home_button.h \
     hw.h \
     progress.h \
     touch.h \
