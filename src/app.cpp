@@ -17,6 +17,7 @@
 
 #include "app.h"
 #include "home_button.h"
+#include "X11Input.h"
 
 
 App::App(int &argc, char **argv) :
@@ -56,6 +57,13 @@ App::App(int &argc, char **argv) :
     Logger::install_syslog();
 
     HomeButton::hide_home_button();
+
+    // Initialise the X11 input grabbing singleton.
+    X11Input::getInstance().initialise();
+
+    // Capture X11 input from propagating behind the Qt app and hide X11 cursor.
+    X11Input::getInstance().capture();
+
     this->tracker.start_session();
     this->engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
 }
@@ -63,6 +71,10 @@ App::App(int &argc, char **argv) :
 
 App::~App()
 {
+    // Restore X11 input
+    X11Input::getInstance().restore();
+    X11Input::getInstance().clean();
+
     HomeButton::show_home_button();
     this->tracker.end_session();
 }
