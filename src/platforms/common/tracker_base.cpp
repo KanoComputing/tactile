@@ -48,7 +48,7 @@ Q_INVOKABLE void Tracker::end_session() const
 Q_INVOKABLE void Tracker::track_action(QString name) const
 {
     QStringList args;
-    args << "session" << "action" << name;
+    args << "action" << name;
 
     this->run_tracker_command(args);
 }
@@ -57,7 +57,7 @@ Q_INVOKABLE void Tracker::track_action(QString name) const
 Q_INVOKABLE void Tracker::track_data(QString event_name, QString data) const
 {
     QStringList args;
-    args << "session" << "data" << event_name << data;
+    args << "data" << event_name << data;
 
     this->run_tracker_command(args);
 }
