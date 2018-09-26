@@ -9,7 +9,8 @@
 SRC_DIR = $$PWD/../src
 SRC_FILES = \
     app.cpp \
-    main.cpp
+    main.cpp \
+    X11Input.cpp
 
 for (SRC, SRC_FILES) {
     SOURCES *= $$SRC_DIR/$$SRC

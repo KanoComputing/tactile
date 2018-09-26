@@ -13,8 +13,10 @@ HEADER_FILES = \
     home_button.h \
     hw.h \
     progress.h \
+    Singleton.h \
     touch.h \
-    tracker.h
+    tracker.h \
+    X11Input.h
 
 for (HEADER, HEADER_FILES) {
     HEADERS *= $$INCLUDEPATH/$$HEADER
