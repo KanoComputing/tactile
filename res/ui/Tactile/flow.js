@@ -95,7 +95,7 @@ function create_steps() {
     }, Tactile.Wires.TouchAWire.signals.touched);
     new_step(function(scene) {
         scene.prompt(qsTr(
-            "When you touch the sceen the wires can detect the electric " +
+            "When you touch the screen the wires can detect the electric " +
             "charge in your finger"
         ), {
             bg_enabled: true
