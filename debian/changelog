@@ -2,6 +2,7 @@ tactile (4.2.0-0) unstable; urgency=low
 
   * Fixed minor spelling errors
   * Added sound effects to pixel coordinates quiz scene
+  * Fixed particle spawn performance in the TouchAGrid scene
 
  -- Team Kano <dev@kano.me>  Fri, 5 Oct 2018 11:36:37 +0100
 
