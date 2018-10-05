@@ -139,12 +139,12 @@ Item {
 
         Repeater {
             id: touch_emitters
-            model: touch_area.current_touch_points
+            model: 10
 
             Repeater {
                 model: 2
                 property int touch_index: index
-                property TouchPoint touch_point: touch_area.current_touch_points[index]
+                property TouchPoint touch_point: index < touch_area.current_touch_points.length ? touch_area.current_touch_points[index] : null
 
                 Emitter {
                     property real angle: index * Math.PI / 2
@@ -172,5 +172,4 @@ Item {
             alpha: 1.0
         }
     }
-
 }
