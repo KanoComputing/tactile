@@ -55,7 +55,7 @@ function create_steps() {
             "Swipe to see them"
         );
         // Prevent accidental tapping from previous scene skipping instructions
-        scene.timer.sleep(500);
+        scene.timer.sleep(2000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.enabled = true;
@@ -80,7 +80,7 @@ function create_steps() {
             qsTr("Each wire is filled with electric charges."), {
             bg_enabled: true
         });
-        scene.timer.sleep(2000);
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt(qsTr(
@@ -89,7 +89,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.timer.sleep(2000);
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
     }, Tactile.Wires.TouchAWire.signals.touched);
@@ -100,7 +100,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.timer.sleep(2000);
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt('');
@@ -124,7 +124,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.timer.sleep(1000);
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
     }, Tactile.Wires.TouchAGrid.signals.touch);
@@ -135,7 +135,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.timer.sleep(6000);
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt(qsTr(
@@ -168,7 +168,7 @@ function create_steps() {
             bg_enabled: true
         });
         // Give a couple of seconds to read the instructions
-        scene.timer.sleep(2000);
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         // After the wait, dismiss on press
@@ -190,7 +190,7 @@ function create_steps() {
         });
     }, Tactile.Wires.TouchPoints.signals.correct_response);
     new_step(function(scene) {
-        scene.timer.sleep(250);
+        scene.timer.sleep(1500);
     }, Tactile.Sleep.signals.wait_over);
 
     /**
@@ -206,7 +206,7 @@ function create_steps() {
             "Swipe to chase them into your screen"
         );
         // Prevent accidental tapping from previous scene skipping instructions
-        scene.timer.sleep(1000);
+        scene.timer.sleep(2000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.enabled = true;
@@ -246,7 +246,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.timer.sleep(4000);
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         // Right eye
@@ -305,7 +305,7 @@ function create_steps() {
     }, Tactile.Pixels.GuessThePixel.signals.target_hit);
     new_step(function(scene) {
         scene.prompt('');
-        scene.timer.sleep(4000);
+        scene.timer.sleep(5000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.transition();
@@ -323,14 +323,14 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.timer.sleep(6000);
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt(
             qsTr("Swipe up and down to change the color"), {
             bg_enabled: true
         });
-        scene.timer.sleep(4000);
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt(qsTr(
@@ -339,7 +339,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.timer.sleep(4000);
+        scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.set_target(0.95, 0.4, 0.1);
@@ -391,7 +391,7 @@ function create_steps() {
         ), {
             bg_enabled: true
         });
-        scene.timer.sleep(5000);
+        scene.timer.sleep(8000);
     }, Tactile.Sleep.signals.wait_over);
 
     /**
