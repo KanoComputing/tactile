@@ -5,8 +5,9 @@ tactile (4.2.0-0) unstable; urgency=low
   * Fixed particle spawn performance in the TouchAGrid scene
   * Normalised scene transition times to give users enough
     time to read instructions
+  * Mark the app to be shown only for touch-capable devices
 
- -- Team Kano <dev@kano.me>  Mon, 8 Oct 2018 11:36:37 +0100
+ -- Team Kano <dev@kano.me>  Tue, 30 Oct 2018 12:21:00 +0000
 
 tactile (4.1.0-0) unstable; urgency=low
 
