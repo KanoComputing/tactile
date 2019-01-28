@@ -9,7 +9,7 @@
 
 
 import QtQuick 2.3
-import Multimedia 5.8
+// import Multimedia 5.8
 
 import Tactile.Terminal 1.0
 
@@ -19,12 +19,12 @@ Item {
     signal finished_writing()
     signal response(string msg)
     function play_beep() {
-        beep.source = 'beep.wav'
-        beep.play();
+        // beep.source = 'beep.wav'
+        // beep.play();
     }
     function play_hello() {
-        beep.source = 'hello.wav'
-        beep.play();
+        // beep.source = 'hello.wav'
+        // beep.play();
     }
     function echo_msg(msg) {
         terminal.echo_msg(msg);
@@ -61,9 +61,11 @@ Item {
         }
     }
 
+    /*
     Audio {
         id: beep
         source: 'beep.wav'
         onStopped: play_sound.finished_playing()
     }
+    */
 }

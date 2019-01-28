@@ -11,7 +11,7 @@
 
 import QtQuick 2.0
 import QtQuick.Particles 2.0
-import QtMultimedia 5.8
+// import QtMultimedia 5.8
 
 import Tactile.Components 1.0
 import Tactile.Pixels 1.0
@@ -173,7 +173,7 @@ Rectangle {
                             onClicked: {
                                 if (!is_answer) {
                                     validation_animation.running = true;
-                                    sound_failure.play();
+                                    // sound_failure.play();
                                     return;
                                 }
 
@@ -182,7 +182,7 @@ Rectangle {
                                     response_text.width / 2,
                                     response_text.height / 2
                                 );
-                                sound_success.play();
+                                // sound_success.play();
                                 exploder.explode(30, coords.x, coords.y);
                             }
                         }
@@ -216,6 +216,7 @@ Rectangle {
         }
     }
 
+    /*
     SoundEffect {
         id: sound_success
         source: "../Pixels/challenge_complete.wav"
@@ -224,4 +225,5 @@ Rectangle {
         id: sound_failure
         source: "../Pixels/ungrab.wav"
     }
+    */
 }

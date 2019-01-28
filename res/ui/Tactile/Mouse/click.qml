@@ -9,7 +9,7 @@
 
 
 import QtQuick 2.3
-import Multimedia 5.8
+// import Multimedia 5.8
 
 import Tactile.Mouse 1.0
 
@@ -22,7 +22,7 @@ MouseScene {
     function new_target(x, y, conf) {
         var target = screen.create_target(x, y, conf);
         target.clicked.connect(function(mouse) {
-            clicked_sound.play();
+            // clicked_sound.play();
             target.hit();
         });
         target.exploded.connect(function() {
@@ -30,8 +30,10 @@ MouseScene {
         });
     }
 
+    /*
     Audio {
         id: clicked_sound
         source: 'pop.wav'
     }
+    */
 }

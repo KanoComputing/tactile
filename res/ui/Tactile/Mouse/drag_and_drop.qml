@@ -10,7 +10,7 @@
 
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
-import Multimedia 5.8
+// import Multimedia 5.8
 
 import Tactile.Mouse 1.0
 import Tactile.Terminal 1.0
@@ -219,7 +219,7 @@ TerminalHeader {
                     draggable_block.visible = false;
                     drag_and_drop.blocks_connected();
                     _blocks_connected = true;
-                    connect_sound.play();
+                    // connect_sound.play();
                 }
             }
         }
@@ -242,10 +242,12 @@ TerminalHeader {
         sourceComponent: click_help ? drag_tooltip : undefined
     }
 
+    /*
     Audio {
         id: connect_sound
         source: 'click.wav'
     }
+    */
 
     Timer {
         interval: timeout * 1000  // Milliseconds

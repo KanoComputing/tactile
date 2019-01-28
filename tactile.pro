@@ -10,10 +10,18 @@ TEMPLATE = app
 
 CONFIG += \
     kano_build_options \
-    kano_qt_sdk
+    # kano_qt_sdk
+
+QT += \
+    qml \
+    quick
+CONFIG += \
+    c++11 \
+    debug \
+    kano_debug_target
 
 unix:!macx {
-    QT += dbus
+    # QT += dbus
 }
 
 include(build/i18n.pri)
@@ -30,6 +38,10 @@ QML_IMPORT_PATHS = \
 DEFINES += QML_IMPORT_PATHS=\\\"$$join($$list($$QML_IMPORT_PATHS), ':')\\\"
 
 DESTDIR = bin
+OBJECTS_DIR = build/obj
+MOC_DIR = build/moc
+RCC_DIR = build/rcc
+UI_DIR = build/ui
 
 # TODO: Move the logic below into kano-qt-sdk and remove!
 

@@ -22,9 +22,11 @@
 
 App::App(int &argc, char **argv) :
     QGuiApplication(argc, argv),
-    logger("qml"),
+    // logger("qml"),
     tracker(this)
 {
+    engine.addImportPath( "qrc:///ui" );
+
     QStringList include_paths =
 #ifdef QML_IMPORT_PATHS
         QString(QML_IMPORT_PATHS).split(':');
@@ -48,13 +50,13 @@ App::App(int &argc, char **argv) :
     ctx->setContextProperty("app", this);
     ctx->setContextProperty("display", &this->display);
     ctx->setContextProperty("hw", &this->hw);
-    ctx->setContextProperty("logger", &this->logger);
+    // ctx->setContextProperty("logger", &this->logger);
     ctx->setContextProperty("progress", &this->progress);
     ctx->setContextProperty("touch", &this->touch);
     ctx->setContextProperty("tracker", &this->tracker);
 
-    Logger::set_app_name("tactile");
-    Logger::install_syslog();
+    // Logger::set_app_name("tactile");
+    // Logger::install_syslog();
 
     HomeButton::hide_home_button();
 

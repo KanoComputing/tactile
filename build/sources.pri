@@ -22,7 +22,8 @@ PLATFORM_BASE_DIR = $$SRC_DIR/platforms
 macx {
     PLATFORM_DIR = $$PLATFORM_BASE_DIR/macosx
 } else:unix {
-    PLATFORM_DIR = $$PLATFORM_BASE_DIR/linux
+    # PLATFORM_DIR = $$PLATFORM_BASE_DIR/linux
+    PLATFORM_DIR = $$PLATFORM_BASE_DIR/macosx
 }
 
 

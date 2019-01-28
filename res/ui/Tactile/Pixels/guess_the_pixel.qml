@@ -10,7 +10,7 @@
 
 
 import QtQuick 2.0
-import QtMultimedia 5.8
+// import QtMultimedia 5.8
 
 import Tactile.Components 1.0
 import Tactile.Pixels 1.0
@@ -101,6 +101,7 @@ Rectangle {
         }
     }
 
+    /*
     SoundEffect {
         id: sound_success
         source: "challenge_complete.wav"
@@ -109,6 +110,7 @@ Rectangle {
         id: sound_failure
         source: "ungrab.wav"
     }
+    */
 
     Component {
         id: pixel
@@ -139,10 +141,10 @@ Rectangle {
                 target_x = -1;
                 target_y = -1;
 
-                sound_success.play();
+                // sound_success.play();
                 bg.target_hit();
             } else {
-                sound_failure.play();
+                // sound_failure.play();
             }
         }
     }

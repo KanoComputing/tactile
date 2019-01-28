@@ -15,7 +15,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include <kano/kano_logging/kano_logging.h>
+// #include <kano/kano_logging/kano_logging.h>
 
 #include "display_screen.h"
 #include "hw.h"
@@ -38,7 +38,7 @@ class App : public QGuiApplication
         HW hw;
         Progress progress;
         Touch touch;
-        Logger logger;
+        // Logger logger;
         Tracker tracker;
 
         void clear_cursor_stack();
