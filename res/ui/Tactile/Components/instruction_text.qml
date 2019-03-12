@@ -15,7 +15,7 @@ import QtQuick 2.0
 Text {
     font.family: "Bariol"
     font.pointSize: 25
-    font.weight: Font.Bold
+    font.weight: Font.Normal
     color: "white"
     wrapMode: Text.WordWrap
     height: contentHeight
