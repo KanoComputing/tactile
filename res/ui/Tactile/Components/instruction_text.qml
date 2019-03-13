@@ -18,5 +18,6 @@ Text {
     font.weight: Font.Normal
     color: "white"
     wrapMode: Text.WordWrap
+    textFormat: Text.StyledText
     height: contentHeight
 }

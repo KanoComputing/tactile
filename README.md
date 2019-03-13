@@ -21,7 +21,7 @@ Install the Build-Depends as listed in debian/control file:
 
 Add Qt5 build tools to your PATH:
 
-```
+```git
 echo 'export PATH=$PATH:/usr/local/qt5/bin' >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
@@ -41,7 +41,7 @@ You should be able to call `qmake` from a terminal shell.
 Next, comes the fun part - compiling all other dependencies. Clone the following
 repos and have the following structure:
 
-```
+```git
 containingFolder
    |-- tactile
    |-- kano-qt-sdk
@@ -50,7 +50,7 @@ containingFolder
 
 Compile libparson and symlink its header files:
 
-```
+```git
 cd ~/Kano/kano-toolset/libs/parson
 sudo mkdir -p /usr/local/include/parson
 sudo ln -s `pwd`/* /usr/local/include/parson
@@ -60,7 +60,7 @@ sudo ln -s `pwd`/release/libparson.dylib /usr/local/lib
 
 Compile libkano_logging and symlink its header files:
 
-```
+```git
 cd ~/Kano/kano-qt-sdk
 sudo mkdir -p /usr/local/include/kano/kano_logging
 sudo ln -s `pwd`/lib/kano_logging/includes/* /usr/local/include/kano/kano_logging
@@ -174,6 +174,64 @@ modify the file
 
 - run `qmake`
 
+## Alternative way for linux to pass files to the Kano-kit
+
+Enter in kano-kit server and copy the path that you need
+You can *find the path* with  the command:
+
+`dpkg-query -L <package name>` => dpkg-query -L tactile
+
+tips: `dpkg-query -L <package name> | grep <name of the file>`
+
+note: this method won't work for a new file, use the install.file instead
+
+or you can **use the install file** in **debian folder** but you must complete manually the path
+
+```git
+tactile
+   |-- bin
+   |-- build
+   |-- debian
+       |--tactile.install
+
+eg res/ui is inside the kano-kit => /usr/share/tactile
+```
+
+example path /usr/share/tactile/
+
+`syntax ssh user@ip` => `ssh laura@172.16.254.180`
+
+you can find your kano-kit ip in the wifi's icon in the kano-kit itself
+
+exit the kano-kit server and run:
+
+ps. you must use **root** as **user**
+
+`rsync -avi <path/where I am going copy from> root@172.16.254.180:/path/Where I going copy to/` => `rsync -av ui root@172.16.254.180:/usr/share/tactile/`
+
+`flag -n` it's gonna tell you the output without running the command for async
+
+**faster approach**
+
+`rsync -avinr res/ui/*  root@172.16.254.180:/usr/share/tactile/ui/`
+
+see if it's ok then run
+
+`rsync -avir res/ui/*  root@172.16.254.180:/usr/share/tactile/ui/`
+
+if you see multiple file being update on your terminal:
+
+```git
+<f+++++++++ Tactile/Wires/touch_a_grid.qml
+<f+++++++++ Tactile/Wires/touch_a_wire.qml
+<f+++++++++ Tactile/Wires/touch_indicator.qml
+<f+++++++++ Tactile/Wires/touch_points.qml
+<f+++++++++ Tactile/Wires/touchscreen.png
+<f+++++++++ Tactile/Wires/wire.png
+```
+
+**You may be doing something wrong!**
+
 ## Building
 
 After setting up the environment on your platform of choice, you should be able
@@ -183,7 +241,7 @@ to build the project in the same way as in the debian/rules file.
 
 Straightforwardly, compiling Tactile now is just:
 
-```
+```git
 qmake && make -j `nproc`
 ```
 
