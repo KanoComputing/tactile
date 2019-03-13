@@ -181,7 +181,7 @@ You can *find the path* with  the command:
 
 `dpkg-query -L <package name>` => dpkg-query -L tactile
 
-tips: `dpkg-query -L <package name> | grep <name of the file>`
+tip: `dpkg-query -L <package name> | grep <name of the file>`
 
 note: this method won't work for a new file, use the install.file instead
 
@@ -229,6 +229,31 @@ if you see multiple file being update on your terminal:
 <f+++++++++ Tactile/Wires/touchscreen.png
 <f+++++++++ Tactile/Wires/wire.png
 ```
+
+## if you change the file you need tp update the debian/changelog file
+
+example:
+
+if current version tactile (4.2.0-0)
+
+changelog => tactile (4.3.0-0)
+
+```git
+
+tactile (4.3.0-0) unstable; urgency=low
+
+  * Change default text formatting to normal
+
+ -- Team Kano <dev@kano.me>  Tue, 12 Mar 2019 15:35:00 +0000
+
+tactile (4.2.0-0) unstable; urgency=low
+
+  * Fixed minor spelling errors
+ ...
+
+```
+
+ if in the changelog file there are already changes with the next version you should just update it.
 
 **You may be doing something wrong!**
 
