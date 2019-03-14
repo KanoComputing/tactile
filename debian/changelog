@@ -1,8 +1,7 @@
 tactile (4.3.0-0) unstable; urgency=low
 
   * Change default text formatting to normal
-  * Fix cta text in bold
-  * add documentation for linux
+  * Style call-to-action strings in bold
 
  -- Team Kano <dev@kano.me>  Tue, 13 Wed 2019 14:29:00 +0000
 
