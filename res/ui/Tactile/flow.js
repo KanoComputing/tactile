@@ -91,7 +91,8 @@ function create_steps() {
         });
         scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
-    new_step(function(scene) {}, Tactile.Wires.TouchAWire.signals.touched);
+    new_step(function(scene) {
+    }, Tactile.Wires.TouchAWire.signals.touched);
     new_step(function(scene) {
         scene.prompt(qsTr(
             "When you touch the screen the wires can detect the electric " +

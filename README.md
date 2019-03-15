@@ -252,11 +252,11 @@ if you see multiple file being update on your terminal:
 <f+++++++++ Tactile/Wires/wire.png
 ```
 
-## if you change the file you need to update the debian/changelog file
+If you change the file you need to update the debian/changelog file
 
-example:
+Example:
 
-if current version tactile (4.2.0-0)
+If current version tactile (4.2.0-0)
 
 changelog => tactile (4.3.0-0)
 
@@ -275,7 +275,7 @@ tactile (4.2.0-0) unstable; urgency=low
 
 ```
 
- if in the changelog file there are already changes with the next version you should just update it.
+ If in the changelog file there are already changes with the next version you should just update it.
 
 **You may be doing something wrong!**
 
