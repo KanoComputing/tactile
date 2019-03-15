@@ -241,7 +241,7 @@ See if it's ok then run the same command without the -n flag
 
 `rsync -avir res/ui/*  root@172.16.254.180:/usr/share/tactile/ui/`
 
-if you see multiple file being update on your terminal:
+If you see multiple file being update on your terminal:
 
 ```bash
 <f+++++++++ Tactile/Wires/touch_a_grid.qml
