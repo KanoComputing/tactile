@@ -77,7 +77,8 @@ function create_steps() {
     new_scene(Tactile.Wires.TouchAWire);
     new_step(function(scene) {
         scene.prompt(
-            qsTr("Each wire is filled with electric charges."), {
+            qsTr("Each wire is filled with electric charges."
+            ), {
                 bg_enabled: true
             });
         scene.timer.sleep(10000);
@@ -127,9 +128,7 @@ function create_steps() {
         scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
-
-        //pass
-
+        // pass
     }, Tactile.Wires.TouchAGrid.signals.touch);
     new_step(function(scene) {
         scene.prompt(qsTr(
@@ -336,12 +335,14 @@ function create_steps() {
         scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
-        scene.prompt(qsTr(
-            "The red, green and blue lights can work together to make any " +
-            "color!"
-        ), {
-            bg_enabled: true
-        });
+        scene.prompt(
+            qsTr(
+                "The red, green and blue lights can work together to make " +
+                "any color!"
+            ), {
+                bg_enabled: true
+            }
+        );
         scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
@@ -375,9 +376,7 @@ function create_steps() {
         scene.timer.sleep(2000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
-
         // pass
-
     }, Tactile.Pixels.PixelDivider.signals.touch);
     new_step(function(scene) {
         scene.prompt(qsTr("Keep tapping!"), {

@@ -73,16 +73,18 @@ sudo ln -s `pwd`/lib/build/* /usr/local/lib
 
 NB This linux README is incomplete (installation issue not solved)
 
-First update your sistem
+First update your system
 
-      sudo apt-get update
+```
+sudo apt-get update
+```
 
 - Install [QtCreator 5.11](https://www.lucidar.me/en/dev-c-cpp/how-to-install-qt-creator-on-ubuntu-18-04/) or higher running these commands:
 
 ```bash
-   sudo apt install build-essential
+sudo apt install build-essential
 
-   sudo apt install qtcreator
+sudo apt install qtcreator
 ```
 
 If you want Qt 5 to be the default Qt version to be used when using development binaries like qmake, install the following package:
@@ -96,9 +98,8 @@ sudo apt install qtbase5-examples
 
 You dont need to set the PATH, linux will do it for you!
 
-If get the error: *cannot find feature `kano_i18n`*
-
-clone the following repository and have the following structure:
+If get the error: *cannot find feature `kano_i18n`* then clone the following
+repository and have the following structure:
 
 ```bash
 containingFolder
@@ -108,7 +109,7 @@ containingFolder
 
 ```
 
-commands:
+Commands:
 
 ```bash
 mkdir containingFolder
@@ -117,19 +118,19 @@ mv tactile/ containingFolder/
 
 ```
 
-Clone inside containingFolder the repo [kano-qt-sdk](https://github.com/KanoComputing/kano-qt-sdk) and the repo [kano-toolset](https://github.com/KanoComputing/kano-toolset)
+Clone inside `containingFolder` the repo [kano-qt-sdk](https://github.com/KanoComputing/kano-qt-sdk) and the repo [kano-toolset](https://github.com/KanoComputing/kano-toolset)
+
+Compile `libparson` and symlink its header files:
 
 ```bash
-Compile libparson and symlink its header files:
-
 cd ~/Kano/kano-toolset/libs/parson
 sudo mkdir -p /usr/local/include/parson
 sudo ln -s `pwd`/* /usr/local/include/parson
 make
-
 ```
 
-In mac we have `libparson.dylib` that in linux is called `libparson.so`. You have to replace them.
+On mac we have `libparson.dylib` that in Linux is called `libparson.so`. You
+have to replace them:
 
 ```bash
 sudo ln -s `pwd`/release/libparson.so /usr/local/lib
@@ -152,7 +153,7 @@ If you get an error on `make` command
 Project ERROR: Unknown module(s) in QT: qml quick
 ```
 
-You need to install **qml&** and **quick**
+You need to install **qml** and **quick**
 
 ```bash
 sudo apt-get install qtdeclarative5-dev
@@ -173,7 +174,7 @@ open => features/kano_build_options.prf
 
 And modify the file
 
-```bash
+```diff
 -macx {
 -    LIBS += -L/usr/lib -L/usr/local/lib
 -    INCLUDEPATH += /usr/include /usr/local/include
@@ -182,7 +183,6 @@ And modify the file
 +LIBS += -L/usr/lib -L/usr/local/lib
 +INCLUDEPATH += /usr/include /usr/local/include
 +
-
 ```
 
 Eventually you should run:
@@ -252,13 +252,13 @@ If you see multiple file being update on your terminal:
 <f+++++++++ Tactile/Wires/wire.png
 ```
 
-If you change the file you need to update the debian/changelog file
+If you change the file you need to update the `debian/changelog` file
 
 Example:
 
 If current version tactile (4.2.0-0)
 
-changelog => tactile (4.3.0-0)
+Changelog => tactile (4.3.0-0)
 
 ```bash
 
@@ -282,7 +282,7 @@ tactile (4.2.0-0) unstable; urgency=low
 ## Building
 
 After setting up the environment on your platform of choice, you should be able
-to build the project in the same way as in the debian/rules file.
+to build the project in the same way as in the `debian/rules` file.
 
 ### Raspberry Pi
 
