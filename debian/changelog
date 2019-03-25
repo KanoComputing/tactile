@@ -1,3 +1,10 @@
+tactile (4.3.0-0) unstable; urgency=low
+
+  * Change default text formatting to normal
+  * Style call-to-action strings in bold
+
+ -- Team Kano <dev@kano.me>  Tue, 13 Wed 2019 14:29:00 +0000
+
 tactile (4.2.0-0) unstable; urgency=low
 
   * Fixed minor spelling errors

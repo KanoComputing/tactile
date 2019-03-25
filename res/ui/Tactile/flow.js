@@ -1,7 +1,7 @@
 /**
  * flow.js
  *
- * Copyright (C) 2018 Kano Computing Ltd.
+ * Copyright (C) 2018-2019 Kano Computing Ltd.
  * License: http://www.gnu.org/licenses/gpl-2.0.txt GNU GPLv2
  *
  * A succession of scenes and steps stringed together for the app.
@@ -50,9 +50,9 @@ function create_steps() {
     new_step(function(scene) {
         scene.bg_image = 'Wires/touchscreen.png';
         scene.instructions = qsTr(
-            "There are amazing things hidden inside your screen...\n" +
+            "<p>There are amazing things hidden inside your screen...\n</p>" +
             "\n" +
-            "Swipe to see them"
+            "<b>Swipe to see them</b>"
         );
         // Prevent accidental tapping from previous scene skipping instructions
         scene.timer.sleep(2000);
@@ -77,15 +77,16 @@ function create_steps() {
     new_scene(Tactile.Wires.TouchAWire);
     new_step(function(scene) {
         scene.prompt(
-            qsTr("Each wire is filled with electric charges."), {
-            bg_enabled: true
-        });
+            qsTr("Each wire is filled with electric charges."
+            ), {
+                bg_enabled: true
+            });
         scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt(qsTr(
             "But so is your finger!\n" +
-            "Touch the wire to see what happens..."
+            "<b>Touch</b> the wire to see what happens..."
         ), {
             bg_enabled: true
         });
@@ -120,13 +121,14 @@ function create_steps() {
     new_step(function(scene) {
         scene.prompt(qsTr(
             "Each wire keeps an eye out for your finger\n" +
-            "Touch the screen again"
+            "<b>Touch</b> the screen again"
         ), {
             bg_enabled: true
         });
         scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
+        // pass
     }, Tactile.Wires.TouchAGrid.signals.touch);
     new_step(function(scene) {
         scene.prompt(qsTr(
@@ -163,7 +165,7 @@ function create_steps() {
     new_scene(Tactile.Wires.TouchPoints);
     new_step(function(scene) {
         scene.prompt(qsTr(
-            "Touch with 5 fingers to see the secret messages!"
+            "<b>Touch</b> with 5 fingers to see the secret messages!"
         ), {
             bg_enabled: true
         });
@@ -203,7 +205,7 @@ function create_steps() {
         scene.instructions = qsTr(
             "Did you see those points of light?\n" +
             "\n" +
-            "Swipe to chase them into your screen"
+            "<b>Swipe</b> to chase them into your screen"
         );
         // Prevent accidental tapping from previous scene skipping instructions
         scene.timer.sleep(2000);
@@ -327,33 +329,36 @@ function create_steps() {
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.prompt(
-            qsTr("Swipe up and down to change the color"), {
-            bg_enabled: true
-        });
+            qsTr("<b>Swipe up and down</b> to change the color"), {
+                bg_enabled: true
+            });
         scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
-        scene.prompt(qsTr(
-            "The red, green and blue lights can work together to make any " +
-            "color!"
-        ), {
-            bg_enabled: true
-        });
+        scene.prompt(
+            qsTr(
+                "The red, green and blue lights can work together to make " +
+                "any color!"
+            ), {
+                bg_enabled: true
+            }
+        );
         scene.timer.sleep(10000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
         scene.set_target(0.95, 0.4, 0.1);
         scene.prompt(
             qsTr("Can you try to make orange?"), {
-            bg_enabled: true
-        });
+                bg_enabled: true
+            });
     }, Tactile.Pixels.SubpixelSimulator.signals.color_matched);
     new_step(function(scene) {
         scene.prompt(
             qsTr("Nice work!"), {
-            bg_enabled: true,
-            button_text: qsTr('Next')
-        });
+                bg_enabled: true,
+                button_text: qsTr('Next')
+            }
+        );
     }, Tactile.Pixels.SubpixelSimulator.signals.done);
 
     /**
@@ -364,13 +369,14 @@ function create_steps() {
     new_step(function(scene) {
         scene.prompt(qsTr(
             "Pixels can work together to make images...\n" +
-            "Tap the screen to see this happen"
+            "<b>Tap</b> the screen to see this happen"
         ), {
             bg_enabled: true
         });
         scene.timer.sleep(2000);
     }, Tactile.Sleep.signals.wait_over);
     new_step(function(scene) {
+        // pass
     }, Tactile.Pixels.PixelDivider.signals.touch);
     new_step(function(scene) {
         scene.prompt(qsTr("Keep tapping!"), {
